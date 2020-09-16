@@ -105,13 +105,13 @@ int tanh(int)
 /* This is permutation or combination based on the formulas.
    We have to use int fact to get the factorial for the formula.
 
-int fact(int n) {           //formula for factorial
+int fact(int n) {           //formula for factorial not working currently i have to get back it
    if (n == 0 || n == 1)
    return 1;
    else
    return n * fact(n - 1);
 }
-int main() {
+int main() {                //formula for combination and permutation nor working due to the need of factorial.
    int n, r, comb, per;
    cout<<"Enter n : ";
    cin>>n;
