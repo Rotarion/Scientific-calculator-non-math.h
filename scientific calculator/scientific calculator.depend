@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1600187785 source:c:\users\pablo\desktop\c++ class\scientific calculator\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+	<iomanip>
+	<complex>
+	<iostream>
+	<iostream>
+
