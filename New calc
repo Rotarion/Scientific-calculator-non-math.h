@@ -1,0 +1,77 @@
+#include <iostream>
+#include <bits/stdc++.h>    //
+#include <iomanip>
+#include <complex>          //
+using namespace std;
+
+int fact(int n);
+int comb(int n, int r);
+int per(int n, int r);
+float sinh(float n);
+float cosh(float n);
+float tanh(float n);
+
+int main()
+{
+    char choice = '+';
+    
+    double 
+    
+    cout << "Please input the two numbers and the operator, in case of not needed the second number choose 0.\n";
+    cout << "Possible operators;\n";
+    cout << "F for factorials\nComb for combinations\nPerm for permutations\nSinh for hyperbolic sin\nCosh for hyperbolic cosine\nTanh for hyperbolic tangent.";
+    cout << "Number 1: ";
+    cin >> a;
+    cout << "Number 1: ";
+    cin >> b;
+    cout << "Operator: ";
+    cin >> op;
+    
+    while ()
+    {
+        
+    }
+    return 0;
+}
+
+int fact(int n)
+{
+    if (n == 0 || n == 1)
+    {
+        return 1;
+    }
+    else if (n < 0)
+    {
+        cout << "Sorry factorials can only be used on positive integers." << endl;
+    }
+    else
+    {
+        return n * fact(n-1);
+    }
+}
+
+int comb(int n, int r) {
+   return fact(n) / (fact(r) * fact(n-r)) ;
+}
+
+int per(int n, int r) {             //formula for the permutation
+    return fact(n) / fact(n-r);
+}
+
+float sinh(float n)
+{
+    float e= 2.71828;
+    return  (pow(e,n)-pow(e,-n))/2;
+}
+
+float cosh(float n)
+{
+    float e= 2.71828;
+    return  (pow(e,n)-pow(e,-n))/2;
+}
+
+float tanh(float n)
+{
+    float e= 2.71828;
+    return  (pow(e,n)-pow(e,-n))/(pow(e,n)+pow(e,-n));
+}
