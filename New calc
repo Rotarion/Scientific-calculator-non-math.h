@@ -4,100 +4,105 @@
 #include <complex>          //
 using namespace std;
 
-double calculatorfunction (double a, double b, char op);
+double calculatorfunction (double a, double b, string op);
 int fact(int n);
 int comb(int n, int r);
 int per(int n, int r);
 double sinh(double n);
 double cosh(double n);
 double tanh(double n);
-int fibonnaci (int n);
-int pasca(int rows);
+int fibonnaci (double n);
+int pasca(double rows);
+float a_sequence(float a, float d, int n);
+float a_sum(float a, float d, int n);
+float g_sequence(float a, float r, int n);
+float g_sum(float a, float r, int n);
+float s_interest(float p, float r, float t);
+float compound_interest(float p, float r, float t, int n);
+float apr(float fees, float interest, float principal, int n);
 
 int main()
 {
-    char op = '+';
+    /*
+    string op = "+";
     double a, b;
 
     cout << "Please input the two numbers and the operator, in case of not needed the second number choose 0.\n";
     cout << "Possible operators;\n";
-    cout << "+ - * / \nF for factorials.\nComb for combinations.\nP for permutations.\nS for hyperbolic sin.\nC for hyperbolic cosine.\nT for hyperbolic tangent.\nQ for quit.\n\n";
+    cout << "+ - * / \nF for factorials.\nComb for combinations.\nPerm for permutations.\nSinh for hyperbolic sin.\nCosh for hyperbolic cosine.\nTanh for hyperbolic tangent.\nQ for quit.\n\n";
     cout << "Number 1: ";
     cin >> a;
     cout << "Number 2: ";
     cin >> b;
     cout << "Operator: ";
-    cin >> op;
+    getline(cin, op);
+    */
 
-    while (op != 'Q')
-    {
-        cout << fixed;
-        cout << "Result: " << calculatorfunction(a, b, op) << endl << endl;
-
-        cout << "Please input the two numbers and the operator, in case of not needed the second number choose 0.\n";
-        cout << "Possible operators;\n";
-        cout << "+ - * / \nF for factorials.\nComb for combinations.\nPerm for permutations.\nSinh for hyperbolic sin.\nCosh for hyperbolic cosine.\nTanh for hyperbolic tangent.\nQ for quit.\n\n";
-        cout << "Number 1: ";
-        cin >> a;
-        cout << "Number 2: ";
-        cin >> b;
-        cout << "Operator: ";
-        cin >> op;
-    }
-    return 0;
+    cout << fixed;
+    cout << apr(50, 0, 500, 14) ;
 }
 
-double calculatorfunction (double a, double b, char op)
+double calculatorfunction (double a, double b, string op)
 {
     double result = 0.0;
 
-    if (op == '+')
+    if (op.compare("+"))
     {
         result = a + b;
     }
-    else if (op == '-')
+    else if (op.compare("-"))
     {
         result = a - b;
     }
-    else if (op == '*')
+    else if (op.compare("*"))
     {
         result = a * b;
     }
-    else if (op == '/')
+    else if (op.compare("/"))
     {
         result = a / b;
     }
-    else if (op == '^')
+    else if (op.compare("^"))
     {
         result = pow(a,b);
     }
-    else if (op == 'F')
+    else if (op.compare("F"))
     {
         b = 0;
         result = fact(a);
     }
-    else if (op == 'C')
+    else if (op.compare("Comb"))
     {
         result = comb(a,b);
     }
-    else if (op == 'P')
+    else if (op.compare("Perm"))
     {
         result = per(a,b);
     }
-    else if (op == 'S')
+    else if (op.compare("Sinh"))
     {
         b = 0;
         result = sinh(a);
     }
-    else if (op == 'C')
+    else if (op.compare("Cosh"))
     {
         b = 0;
         result = cosh(a);
     }
-    else if (op == 'T')
+    else if (op.compare("Tanh"))
     {
         b = 0;
         result = tanh(a);
+    }
+    else if (op.compare("Fibonnaci"))
+    {
+        b = 0;
+        result = fibonnaci(a);
+    }
+    else if (op.compare("Pascal"))
+    {
+        b = 0;
+        result = pasca(a);
     }
     else
     {
@@ -149,7 +154,7 @@ double tanh(double n)
     return  (pow(e,n)-pow(e,-n))/(pow(e,n)+pow(e,-n));
 }
 
-int fibonnaci (int n)
+int fibonnaci (double n)
 {
    int t1 = 0, t2 = 1, nextTerm = 0;
 
@@ -174,7 +179,7 @@ int fibonnaci (int n)
     }
 }
 
-int pasca(int rows)
+int pasca(double rows)
 {
     if (rows >=21)
     {
@@ -204,4 +209,71 @@ int pasca(int rows)
     else{
         cout << "Please enter a positive integer.";
     }
+}
+
+float a_sequence(float a, float d, int n)
+{
+    float nthterm;
+    for(int i=0; i <= n; i++)
+    {
+        nthterm = a + (n-1) * d;
+    }
+    return nthterm;
+}
+
+float a_sum(float a, float d, int n)
+{
+    float sum;
+    for(int i=0; i <= n; i++)
+    {
+        sum = (n/2)*(2 * a + (n-1) * d);
+    }
+    return sum;
+}
+
+float g_sequence(float a, float r, int n)
+{
+    float nthterm;
+    for (int i=0; i <= n; i++)
+    {
+        nthterm = a * pow(r,(n-1));
+    }
+    return nthterm;
+}
+
+float g_sum(float a, float r, int n)
+{
+    float sum;
+    for(int i=0; i <= n; i++)
+    {
+        sum = (a * (pow(r,n)-1))/(r-1);
+    }
+    return sum;
+}
+
+float simple_interest(float principal, float r, float t)
+{
+    float result;
+
+    result = principal * (1 + r * t);
+
+    return result;
+}
+
+float compound_interest(float principal, float r, float t, int n) // r is in % so 6% would be 0.06, n is 1 for yearly and t is the amount of time so 3 for 3 years.
+{
+    float result;
+
+    result = principal * (pow((1 + r / n), (n*t)));
+
+    return result;
+}
+
+float apr(float fees, float interest, float principal, int n) // n number of dais in loan term, the others are self explanatory, yet interest or fees can be 0.
+{
+    float total;
+
+    total = (((( fees + interest) / principal) / n) * 365) * 100;
+
+    return total;
 }
