@@ -21,7 +21,7 @@ int main()
 
     cout << "Please input the two numbers and the operator, in case of not needed the second number choose 0.\n";
     cout << "Possible operators;\n";
-    cout << "+ - * / \nF for factorials.\nComb for combinations.\nPerm for permutations.\nSinh for hyperbolic sin.\nCosh for hyperbolic cosine.\nTanh for hyperbolic tangent.\nQ for quit.\n\n";
+    cout << "+ - * / \nF for factorials.\nComb for combinations.\nP for permutations.\nS for hyperbolic sin.\nC for hyperbolic cosine.\nT for hyperbolic tangent.\nQ for quit.\n\n";
     cout << "Number 1: ";
     cin >> a;
     cout << "Number 2: ";
@@ -76,25 +76,25 @@ double calculatorfunction (double a, double b, char op)
         b = 0;
         result = fact(a);
     }
-    else if (op == 'Comb')
+    else if (op == 'C')
     {
         result = comb(a,b);
     }
-    else if (op == 'Perm')
+    else if (op == 'P')
     {
         result = per(a,b);
     }
-    else if (op == 'Sinh')
+    else if (op == 'S')
     {
         b = 0;
         result = sinh(a);
     }
-    else if (op == 'Cosh')
+    else if (op == 'C')
     {
         b = 0;
         result = cosh(a);
     }
-    else if (op == 'Tanh')
+    else if (op == 'T')
     {
         b = 0;
         result = tanh(a);
