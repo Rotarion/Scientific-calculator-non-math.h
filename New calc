@@ -2,6 +2,7 @@
 #include <bits/stdc++.h>    //
 #include <iomanip>
 #include <complex>          //
+#include <valarray>
 using namespace std;
 
 double calculatorfunction (double a, double b, string op);
@@ -22,6 +23,10 @@ float compound_interest(float p, float r, float t, int n);
 float apr(float fees, float interest, float principal, int n);
 int variance(int a[], int n);
 double standardDeviation(int arr[], int n);
+double Mpi();
+double radian_to_degree(float n);
+double polar_to_rectangular(float r , float theta);
+double rectangular_to_polar (float x, float y);
 
 int main()
 {
@@ -40,10 +45,9 @@ int main()
     getline(cin, op);
     */
 
-     int arr[] = {600, 470, 170, 430, 300};
-    int n = sizeof(arr) / sizeof(arr[0]);
-    cout << "Variance: "
-         << variance(arr, n) << "\n";
+    cout << rectangular_to_polar(1.41, 2);
+
+    //cout << "This is your angle: " << atan(2) * 180 / Mpi();
 }
 
 double calculatorfunction (double a, double b, string op)
@@ -304,3 +308,42 @@ double standardDeviation(int arr[], int n)
 {
     return sqrt(variance(arr, n));
 }
+
+double Mpi()
+{
+    double pi = 3.1415926535;
+
+    return pi;
+}
+
+double radian_to_degree(float n)
+{
+    double angledivide;
+
+    angledivide = n * (Mpi() / 180);
+
+    return angledivide;
+}
+
+double polar_to_rectangular(float r , float theta)
+{
+    double x, y;
+
+    x = r * cos(radian_to_degree(theta));
+    y = r * sin(radian_to_degree(theta));
+
+    cout << "Your x value is " << x << " your y value is " << y << "." << endl;
+    return 0;
+}
+
+double rectangular_to_polar (float x, float y)
+{
+    double r, theta;
+
+    r = sqrt(pow(x, 2) + pow (y, 2));
+    theta = atan (y / x) * 180 / Mpi();
+
+    cout << "Your r value is " << r << " and your angle value is " << theta << " degrees.";
+    return 0;
+}
+
