@@ -4,42 +4,107 @@
 #include <complex>          //
 using namespace std;
 
-
+double calculatorfunction (double a, double b, char op);
 int fact(int n);
 int comb(int n, int r);
 int per(int n, int r);
-float sinh(float n);
-float cosh(float n);
-float tanh(float n);
+double sinh(double n);
+double cosh(double n);
+double tanh(double n);
 int fibonnaci (int n);
 int pasca(int rows);
 
 int main()
 {
-    /*
-    char choice = '+';
-
-    double
+    char op = '+';
+    double a, b;
 
     cout << "Please input the two numbers and the operator, in case of not needed the second number choose 0.\n";
     cout << "Possible operators;\n";
-    cout << "F for factorials\nComb for combinations\nPerm for permutations\nSinh for hyperbolic sin\nCosh for hyperbolic cosine\nTanh for hyperbolic tangent.";
+    cout << "+ - * / \nF for factorials.\nComb for combinations.\nPerm for permutations.\nSinh for hyperbolic sin.\nCosh for hyperbolic cosine.\nTanh for hyperbolic tangent.\nQ for quit.\n\n";
     cout << "Number 1: ";
     cin >> a;
-    cout << "Number 1: ";
+    cout << "Number 2: ";
     cin >> b;
     cout << "Operator: ";
     cin >> op;
 
-    while ()
+    while (op != 'Q')
     {
+        cout << fixed;
+        cout << "Result: " << calculatorfunction(a, b, op) << endl << endl;
 
+        cout << "Please input the two numbers and the operator, in case of not needed the second number choose 0.\n";
+        cout << "Possible operators;\n";
+        cout << "+ - * / \nF for factorials.\nComb for combinations.\nPerm for permutations.\nSinh for hyperbolic sin.\nCosh for hyperbolic cosine.\nTanh for hyperbolic tangent.\nQ for quit.\n\n";
+        cout << "Number 1: ";
+        cin >> a;
+        cout << "Number 2: ";
+        cin >> b;
+        cout << "Operator: ";
+        cin >> op;
     }
-    */
-
-    cout << fibonnaci(5);
-
     return 0;
+}
+
+double calculatorfunction (double a, double b, char op)
+{
+    double result = 0.0;
+
+    if (op == '+')
+    {
+        result = a + b;
+    }
+    else if (op == '-')
+    {
+        result = a - b;
+    }
+    else if (op == '*')
+    {
+        result = a * b;
+    }
+    else if (op == '/')
+    {
+        result = a / b;
+    }
+    else if (op == '^')
+    {
+        result = pow(a,b);
+    }
+    else if (op == 'F')
+    {
+        b = 0;
+        result = fact(a);
+    }
+    else if (op == 'Comb')
+    {
+        result = comb(a,b);
+    }
+    else if (op == 'Perm')
+    {
+        result = per(a,b);
+    }
+    else if (op == 'Sinh')
+    {
+        b = 0;
+        result = sinh(a);
+    }
+    else if (op == 'Cosh')
+    {
+        b = 0;
+        result = cosh(a);
+    }
+    else if (op == 'Tanh')
+    {
+        b = 0;
+        result = tanh(a);
+    }
+    else
+    {
+        cout << "Bad input please go back to inputs and select a proper input." << endl;
+        return 0;
+    }
+    return result;
 }
 
 int fact(int n)
@@ -66,21 +131,21 @@ int per(int n, int r) {             //formula for the permutation
     return fact(n) / fact(n-r);
 }
 
-float sinh(float n)
+double sinh(double n)
 {
-    float e= 2.71828;
+    double e= 2.71828;
     return  (pow(e,n)-pow(e,-n))/2;
 }
 
-float cosh(float n)
+double cosh(double n)
 {
-    float e= 2.71828;
+    double e= 2.71828;
     return  (pow(e,n)-pow(e,-n))/2;
 }
 
-float tanh(float n)
+double tanh(double n)
 {
-    float e= 2.71828;
+    double e= 2.71828;
     return  (pow(e,n)-pow(e,-n))/(pow(e,n)+pow(e,-n));
 }
 
