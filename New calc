@@ -20,6 +20,8 @@ float g_sum(float a, float r, int n);
 float s_interest(float p, float r, float t);
 float compound_interest(float p, float r, float t, int n);
 float apr(float fees, float interest, float principal, int n);
+int variance(int a[], int n);
+double standardDeviation(int arr[], int n);
 
 int main()
 {
@@ -38,8 +40,10 @@ int main()
     getline(cin, op);
     */
 
-    cout << fixed;
-    cout << apr(50, 0, 500, 14) ;
+     int arr[] = {600, 470, 170, 430, 300};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    cout << "Variance: "
+         << variance(arr, n) << "\n";
 }
 
 double calculatorfunction (double a, double b, string op)
@@ -276,4 +280,27 @@ float apr(float fees, float interest, float principal, int n) // n number of dai
     total = (((( fees + interest) / principal) / n) * 365) * 100;
 
     return total;
+}
+
+int variance(int a[], int n)
+{
+    // Compute mean (average of elements)
+    int sum = 0;
+    for (int i = 0; i < n; i++)
+        sum += a[i];
+    double mean = (double)sum /
+                  (double)n;
+
+    // Compute sum squared
+    // differences with mean.
+    double sqDiff = 0;
+    for (int i = 0; i < n; i++)
+        sqDiff += (a[i] - mean) *
+                  (a[i] - mean);
+    return sqDiff / n;
+}
+
+double standardDeviation(int arr[], int n)
+{
+    return sqrt(variance(arr, n));
 }
