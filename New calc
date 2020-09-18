@@ -4,19 +4,23 @@
 #include <complex>          //
 using namespace std;
 
+
 int fact(int n);
 int comb(int n, int r);
 int per(int n, int r);
 float sinh(float n);
 float cosh(float n);
 float tanh(float n);
+int fibonnaci (int n);
+int pasca(int rows);
 
 int main()
 {
+    /*
     char choice = '+';
-    
-    double 
-    
+
+    double
+
     cout << "Please input the two numbers and the operator, in case of not needed the second number choose 0.\n";
     cout << "Possible operators;\n";
     cout << "F for factorials\nComb for combinations\nPerm for permutations\nSinh for hyperbolic sin\nCosh for hyperbolic cosine\nTanh for hyperbolic tangent.";
@@ -26,11 +30,15 @@ int main()
     cin >> b;
     cout << "Operator: ";
     cin >> op;
-    
+
     while ()
     {
-        
+
     }
+    */
+
+    cout << fibonnaci(5);
+
     return 0;
 }
 
@@ -74,4 +82,61 @@ float tanh(float n)
 {
     float e= 2.71828;
     return  (pow(e,n)-pow(e,-n))/(pow(e,n)+pow(e,-n));
+}
+
+int fibonnaci (int n)
+{
+   int t1 = 0, t2 = 1, nextTerm = 0;
+
+    for (int i = 1; i <= n; ++i)
+    {
+        // Prints the first two terms.
+        if(i == 1)
+        {
+            cout << " " << t1;
+            continue;
+        }
+        if(i == 2)
+        {
+            cout << t2 << " ";
+            continue;
+        }
+        nextTerm = t1 + t2;
+        t1 = t2;
+        t2 = nextTerm;
+
+         cout << nextTerm << " ";
+    }
+}
+
+int pasca(int rows)
+{
+    if (rows >=21)
+    {
+        cout << "Sorry memorry error the calculator can only run 20 rows." << endl;
+    }
+    else if (rows <= 0)
+    {
+        int coef = 1;
+
+        for(int i = 0; i < rows; i++)
+        {
+            for(int space = 1; space <= rows-i; space++)
+                cout <<"  ";
+
+            for(int j = 0; j <= i; j++)
+            {
+                if (j == 0 || i == 0)
+                    coef = 1;
+                else
+                    coef = coef*(i-j+1)/j;
+
+                cout << coef << "   ";
+            }
+            cout << endl;
+        }
+    }
+    else{
+        cout << "Please enter a positive integer.";
+    }
 }
