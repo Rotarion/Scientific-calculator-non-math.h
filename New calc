@@ -5,6 +5,8 @@
 #include <valarray>
 using namespace std;
 
+double e = 2.718281828;
+double pi = 3.1415926535;
 double calculatorfunction (double a, double b, string op);
 int fact(int n);
 int comb(int n, int r);
@@ -18,36 +20,41 @@ float a_sequence(float a, float d, int n);
 float a_sum(float a, float d, int n);
 float g_sequence(float a, float r, int n);
 float g_sum(float a, float r, int n);
-float s_interest(float p, float r, float t);
-float compound_interest(float p, float r, float t, int n);
+float s_interest(float principal, float rate, float time);
+float compound_interest(float principal, float rate, float time, int n);
 float apr(float fees, float interest, float principal, int n);
+float mean(float sum, float numberTerms);
+float median(float n);
 int variance(int a[], int n);
 double standardDeviation(int arr[], int n);
-double Mpi();
 double radian_to_degree(float n);
 double polar_to_rectangular(float r , float theta);
 double rectangular_to_polar (float x, float y);
+double natural_Log(double n);
+double Log(double n);
+double exponentialE(double n);
+double exponential2(double n);
+double exponential (double a, double n);
+double Gsin (float n);
+double Gcos (float n);
+double Gtan (float n);
+double Gcsc (float n);
+double Gsec (float n);
+double Gcotan (float n);
+double InvSine (float n);
+double InvCos (float n);
+double InvTan (float n);
+
 
 int main()
 {
-    /*
-    string op = "+";
-    double a, b;
+    cout << Gsin(45) << endl;       // grades
+    cout << Gcos(45) << endl;
+    cout << Gtan(45) << endl;
 
-    cout << "Please input the two numbers and the operator, in case of not needed the second number choose 0.\n";
-    cout << "Possible operators;\n";
-    cout << "+ - * / \nF for factorials.\nComb for combinations.\nPerm for permutations.\nSinh for hyperbolic sin.\nCosh for hyperbolic cosine.\nTanh for hyperbolic tangent.\nQ for quit.\n\n";
-    cout << "Number 1: ";
-    cin >> a;
-    cout << "Number 2: ";
-    cin >> b;
-    cout << "Operator: ";
-    getline(cin, op);
-    */
-
-    cout << rectangular_to_polar(1.41, 2);
-
-    //cout << "This is your angle: " << atan(2) * 180 / Mpi();
+    cout << sin(45) << endl;        // radians
+    cout << cos(45) << endl;
+    return 0;
 }
 
 double calculatorfunction (double a, double b, string op)
@@ -120,7 +127,7 @@ double calculatorfunction (double a, double b, string op)
     return result;
 }
 
-int fact(int n)
+int fact(int n)         //formula for factorial
 {
     if (n == 0 || n == 1)
     {
@@ -136,33 +143,32 @@ int fact(int n)
     }
 }
 
-int comb(int n, int r) {
+int comb(int n, int r)  //formula for the combination
+{
    return fact(n) / (fact(r) * fact(n-r)) ;
 }
 
-int per(int n, int r) {             //formula for the permutation
+int per(int n, int r)   //formula for the permutation
+{
     return fact(n) / fact(n-r);
 }
 
 double sinh(double n)
 {
-    double e= 2.71828;
     return  (pow(e,n)-pow(e,-n))/2;
 }
 
 double cosh(double n)
 {
-    double e= 2.71828;
     return  (pow(e,n)-pow(e,-n))/2;
 }
 
 double tanh(double n)
 {
-    double e= 2.71828;
     return  (pow(e,n)-pow(e,-n))/(pow(e,n)+pow(e,-n));
 }
 
-int fibonnaci (double n)
+int fibonnaci (double n) // Fibonnaci formula
 {
    int t1 = 0, t2 = 1, nextTerm = 0;
 
@@ -187,22 +193,22 @@ int fibonnaci (double n)
     }
 }
 
-int pasca(double rows)
+int pasca(double rows) // Pascal's triangle formula
 {
     if (rows >=21)
     {
         cout << "Sorry memorry error the calculator can only run 20 rows." << endl;
     }
-    else if (rows <= 0)
+    else if (rows <= 1)
     {
         int coef = 1;
 
         for(int i = 0; i < rows; i++)
         {
-            for(int space = 1; space <= rows-i; space++)
+            for(int space = 1; space <= rows-i; space++) // Space for rows
                 cout <<"  ";
 
-            for(int j = 0; j <= i; j++)
+            for(int j = 0; j <= i; j++) // For loop in order to get the coefficient.
             {
                 if (j == 0 || i == 0)
                     coef = 1;
@@ -219,7 +225,7 @@ int pasca(double rows)
     }
 }
 
-float a_sequence(float a, float d, int n)
+float a_sequence(float a, float d, int n)   // Arithmetic sequence formula
 {
     float nthterm;
     for(int i=0; i <= n; i++)
@@ -229,27 +235,27 @@ float a_sequence(float a, float d, int n)
     return nthterm;
 }
 
-float a_sum(float a, float d, int n)
+float a_sum(float a, float d, int n)        // Arithmetic summation formula
 {
     float sum;
-    for(int i=0; i <= n; i++)
+    for(int i=0; i < n; i++)
     {
-        sum = (n/2)*(2 * a + (n-1) * d);
+        sum = (n/2)*(2 * a + (n+1) * d);
     }
     return sum;
 }
 
-float g_sequence(float a, float r, int n)
+float g_sequence(float a, float r, int n)   // Geometric sequence formula
 {
-    float nthterm;
-    for (int i=0; i <= n; i++)
+    float nthterm;              // We gold the nth term of the summation.
+    for (int i=0; i <= n; i++)  // We start at 0 an go after n. We can write it without the <= and having only < but we would have to leave n without -1 which is not preferred.
     {
         nthterm = a * pow(r,(n-1));
     }
     return nthterm;
 }
 
-float g_sum(float a, float r, int n)
+float g_sum(float a, float r, int n)        // Geometric summation formula
 {
     float sum;
     for(int i=0; i <= n; i++)
@@ -259,31 +265,41 @@ float g_sum(float a, float r, int n)
     return sum;
 }
 
-float simple_interest(float principal, float r, float t)
+float simple_interest(float principal, float rate, float time)            // Simple interest formula rate is in % so we use 0.06 for 6%
 {
     float result;
 
-    result = principal * (1 + r * t);
+    result = principal * (1 + rate * time);
 
     return result;
 }
 
-float compound_interest(float principal, float r, float t, int n) // r is in % so 6% would be 0.06, n is 1 for yearly and t is the amount of time so 3 for 3 years.
+float compound_interest(float principal, float rate, float time, int n)   // r is in % so 6% would be 0.06, n is 1 for yearly and t is the amount of time so 3 for 3 years.
 {
     float result;
 
-    result = principal * (pow((1 + r / n), (n*t)));
+    result = principal * (pow((1 + rate / n), (n*time)));
 
     return result;
 }
 
-float apr(float fees, float interest, float principal, int n) // n number of dais in loan term, the others are self explanatory, yet interest or fees can be 0.
+float apr(float fees, float interest, float principal, int n)             // n number of days in loan term, the others are self explanatory, yet interest or fees can be 0.
 {
     float total;
 
-    total = (((( fees + interest) / principal) / n) * 365) * 100;
+    total = (((( fees + interest) / principal) / n) * 365) * 100;       // Get the % of APR you are paying.
 
     return total;
+}
+
+float mean(float sum, float numberTerms)
+{
+    return sum/numberTerms;
+}
+
+float median(float n)
+{
+    return (n+1)/2;
 }
 
 int variance(int a[], int n)
@@ -309,18 +325,11 @@ double standardDeviation(int arr[], int n)
     return sqrt(variance(arr, n));
 }
 
-double Mpi()
-{
-    double pi = 3.1415926535;
-
-    return pi;
-}
-
 double radian_to_degree(float n)
 {
     double angledivide;
 
-    angledivide = n * (Mpi() / 180);
+    angledivide = n * (pi / 180);
 
     return angledivide;
 }
@@ -341,9 +350,78 @@ double rectangular_to_polar (float x, float y)
     double r, theta;
 
     r = sqrt(pow(x, 2) + pow (y, 2));
-    theta = atan (y / x) * 180 / Mpi();
+    theta = atan (y / x) * 180 / pi;
 
     cout << "Your r value is " << r << " and your angle value is " << theta << " degrees.";
     return 0;
 }
 
+double natural_Log(double n)
+{
+    return log(n);
+}
+
+double Log(double n)
+{
+    return log10(n);
+}
+
+double exponentialE(double n)
+{
+    return pow(e, n);
+}
+
+double exponential2(double n)
+{
+    return pow(n, 2);
+}
+
+double exponential (double a, double n)
+{
+    return pow(a, n);
+}
+
+double Gsin (float n)
+{
+    return sin(radian_to_degree((n)));
+}
+
+double Gcos (float n)
+{
+    return cos(radian_to_degree((n)));
+}
+
+double Gtan (float n)
+{
+    return tan(radian_to_degree((n)));
+}
+
+double Gcsc (float n)
+{
+    return 1/sin(radian_to_degree((n)));
+}
+
+double Gsec (float n)
+{
+    return 1/cos(radian_to_degree((n)));
+}
+
+double Gcotan (float n)
+{
+    return 1/tan(radian_to_degree((n)));
+}
+
+double InvSine (float n)
+{
+    return asin(n)*180 /pi;
+}
+
+double InvCos (float n)
+{
+    return acos(n)*180 /pi;
+}
+
+double InvTan (float n)
+{
+    return atan(n)*180 /pi;
+}
