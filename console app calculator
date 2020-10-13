@@ -954,6 +954,7 @@ double tanh(double n)
     return  (pow(e,n)-pow(e,-n))/(pow(e,n)+pow(e,-n));
 }
 
+// It returns input plus one number at the end of the sequence.
 int fibonacci (int n) // Fibonnaci formula
 {
    int t1 = 0, t2 = 1, nextTerm = 0;
