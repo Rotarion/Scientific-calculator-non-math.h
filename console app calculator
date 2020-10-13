@@ -322,9 +322,6 @@ void switch_calculator(int op)
             cout << "This is the Cotangent in radians: " << 1/tan(num1) << endl;
             break;
 
-            // Revise case 11 - 13 inverse radians not working properly. (?) seems fixed
-            // Try for bugs.
-
         case 11:
             cout << "Please enter the number corresponding to the Inverse Sine.\n";
             while(!(cin >> num1))
