@@ -14,7 +14,7 @@ int per(int n, int r);
 double sinh(double n);
 double cosh(double n);
 double tanh(double n);
-int fibonacci (int n);
+void fibonacci (int n);
 int pasca(int rows);
 float a_sequence(float a, float d, int n);
 float a_sum(float a, float d, int n);
@@ -32,7 +32,7 @@ void polar_to_rectangular(float r , float theta);
 void rectangular_to_polar (float x, float y);
 double natural_Log(double n);
 double Log(double n);
-double exponentialE(double n);
+double Log(double n);
 double exponential2(double n);
 double exponential (double a, double n);
 double Gsin (float n);
@@ -592,7 +592,9 @@ void switch_calculator(int op)
                     cin.ignore(123, '\n');
                 }
             }
-                cout << "The fibonacci sequence is: \n" << fibonacci(i1) << endl;
+                cout << "The fibonacci sequence is: \n";
+                fibonacci(i1);
+                cout << endl;
             break;
         case 28:
             cout << "Please enter the number for Pascal's triangle between 1 and 13.\n";
@@ -952,7 +954,7 @@ double tanh(double n)
 }
 
 // It returns input plus one number at the end of the sequence.
-int fibonacci (int n) // Fibonnaci formula
+void fibonacci (int n) // Fibonnaci formula
 {
    int t1 = 0, t2 = 1, nextTerm = 0;
 
@@ -961,7 +963,7 @@ int fibonacci (int n) // Fibonnaci formula
         // Prints the first two terms.
         if(i == 1)
         {
-            cout << " " << t1;
+            cout << " " << t1 << " ";
             continue;
         }
         if(i == 2)
@@ -975,38 +977,6 @@ int fibonacci (int n) // Fibonnaci formula
 
          cout << nextTerm << " ";
     }
-}
-
-int pasca(int rows) // Pascal's triangle formula
-{
-    if (rows >=21)
-    {
-        cout << "Sorry memory error the calculator can only run 20 rows." << endl;
-    }
-    else if (rows <= 1)
-    {
-        int coef = 1;
-
-        for(int i = 0; i < rows; i++)
-        {
-            for(int space = 1; space <= rows-i; space++) // Space for rows
-                cout <<"  ";
-
-            for(int j = 0; j <= i; j++) // For loop in order to get the coefficient.
-            {
-                if (j == 0 || i == 0)
-                    coef = 1;
-                else
-                    coef = coef*(i-j+1)/j;
-
-                cout << coef << "   ";
-            }
-            cout << endl;
-        }
-    }
-    /*else{
-        cout << "Please enter a positive integer or something different from .";
-    }*/
 }
 
 float a_sequence(float a, float d, int n)   // Arithmetic sequence formula
@@ -1146,11 +1116,6 @@ double natural_Log(double n)
 double Log(double n)
 {
     return log10(n);
-}
-
-double exponentialE(double n)
-{
-    return pow(e, n);
 }
 
 double exponential2(double n)
