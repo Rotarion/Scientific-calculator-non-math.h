@@ -25,8 +25,8 @@ float compound_interest(float principal, float rate, float time, int n);
 float apr(float fees, float interest, float principal, int n);
 float amean(float sum, float numberTerms);
 float amedian(float n);
-int variance(int a[], int n);
-double standardDeviation(int arr[], int n);
+float variance(float a[], int n);
+double standardDeviation(float arr[], int n);
 double radian_to_degree(float n);
 void polar_to_rectangular(float r , float theta);
 void rectangular_to_polar (float x, float y);
@@ -90,6 +90,21 @@ float mode( float arr[], int n){
     return res;
 }
 
+long nCr(long n, long r){
+   long nume = 1, i;
+   for(i = n; i>r; i--)
+      nume *= i;
+   return long(nume/fact(n-r));//generate result of nCr
+}
+void genPascalsTriangle(long n){
+   for(int i = 0; i<n; i++){
+      for(int j = 0; j<(n-i-1); j++)
+         cout <<setw(3)<< " ";//printing space to show triangular form
+      for(int j = 0; j<(i+1); j++)
+         cout <<setw(3)<< nCr(i, j) <<setw(3)<< " ";
+      cout << endl;
+   }
+}
 
 int main()
 {
@@ -167,29 +182,69 @@ void switch_calculator(int op)
     {
         case 1:
             cout << "Please enter the first and second number to make the sum." << endl;
-            cin >> num1;
-            cin >> num2;\
+            while(!(cin >> num1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            while(!(cin >> num2))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
             cout << fixed << setprecision(2);
             cout << "Your sum of " << num1 << " and " << num2 << " is " << num1 + num2 << endl;
             break;
         case 2:
             cout << "Please enter the first and second number to make the subtraction.\n The second number will be subtracted from the first.\n" << endl;
-            cin >> num1;
-            cin >> num2;
+            while(!(cin >> num1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            while(!(cin >> num2))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
             cout << fixed << setprecision(2);
             cout << "Your sum of " << num1 << " and " << num2 << " is " << num1 - num2 << endl;
             break;
         case 3:
             cout << "Please enter the first and second number to make the multiplication.\n" << endl;
-            cin >> num1;
-            cin >> num2;
+            while(!(cin >> num1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            while(!(cin >> num2))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
             cout << fixed << setprecision(2);
             cout << "Your multiplication of " << num1 << " by " << num2 << " is " << num1 * num2 << endl;
             break;
         case 4:
             cout << "Please enter the first and second number to make the division.\n The first number will be divided by the second.\n" << endl;
-            cin >> num1;
-            cin >> num2;
+            while(!(cin >> num1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            while(!(cin >> num2))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
             if (num2 == 0)
             {
                 cout << "Sorry you cannot divide by 0, try with another divisor.\n";
@@ -202,37 +257,67 @@ void switch_calculator(int op)
             break;
         case 5:
             cout << "Please enter the number corresponding to the Sine.\n";
-            cin >> num1;
+            while(!(cin >> num1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
             cout << "This is the Sine in degrees: " << Gsin(num1) << endl;
             cout << "This is the Sine in radians: " << sin(num1) << endl;
             break;
         case 6:
             cout << "Please enter the number corresponding to the Cosine.\n";
-            cin >> num1;
+            while(!(cin >> num1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
             cout << "This is the Cosine in degrees: " << Gcos(num1) << endl;
             cout << "This is the Cosine in radians: " << cos(num1) << endl;
             break;
         case 7:
             cout << "Please enter the number corresponding to the Tangent.\n";
-            cin >> num1;
+            while(!(cin >> num1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
             cout << "This is the Tangent in degrees: " << Gtan(num1) << endl;
             cout << "This is the Tangent in radians: " << tan(num1) << endl;
             break;
         case 8:
             cout << "Please enter the number corresponding to the Secant.\n";
-            cin >> num1;
+            while(!(cin >> num1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
             cout << "This is the Secant in degrees: " << 1/Gsin(num1) << endl;
             cout << "This is the Secant in radians: " << 1/sin(num1) << endl;
             break;
         case 9:
             cout << "Please enter the number corresponding to the Cosecant.\n";
-            cin >> num1;
+            while(!(cin >> num1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
             cout << "This is the Cosecant in degrees: " << 1/Gcos(num1) << endl;
             cout << "This is the Cosecant in radians: " << cos(num1) << endl;
             break;
         case 10:
             cout << "Please enter the number corresponding to the Cotangent.\n";
-            cin >> num1;
+            while(!(cin >> num1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
             cout << "This is the Cotangent in degrees: " << 1/Gtan(num1) << endl;
             cout << "This is the Cotangent in radians: " << 1/tan(num1) << endl;
             break;
@@ -242,90 +327,185 @@ void switch_calculator(int op)
 
         case 11:
             cout << "Please enter the number corresponding to the Inverse Sine.\n";
-            cin >> num1;
+            while(!(cin >> num1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
             cout << "This is the Inverse Sine in degrees: " << InvSine(num1) << endl;
             cout << "This is the Inverse Sine in radians: " << asin(num1)  << endl;
             break;
         case 12:
             cout << "Please enter the number corresponding to the  Inverse Cosine.\n";
-            cin >> num1;
+            while(!(cin >> num1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
             cout << "This is the Inverse Cosine in degrees: " << InvCos(num1) << endl;
             cout << "This is the Inverse Cosine in radians: " << acos(num1) << endl;
             break;
         case 13:
             cout << "Please enter the number corresponding to the Inverse Tangent.\n";
-            cin >> num1;
+            while(!(cin >> num1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
             cout << "This is the Inverse Tangent in degrees: " << InvTan(num1) << endl;
             cout << "This is the Inverse Tangent in radians: " << acos(num1) << endl;
             break;
         case 14:
             cout << "Please enter the number so we can raise e to that number.\n";
-            cin >> num1;
+            while(!(cin >> num1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
             cout << fixed << setprecision(2); // We set the decimals to 2.
             cout << "You raise e to the " << num1 << " The result is: " << pow(e,num1) << "." << endl;
             break;
         case 15:
             cout << "Please enter the number x and then enter the exponential.\n";
-            cin >> num1;
-            cin >> num2;
+            while(!(cin >> num1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            while(!(cin >> num2))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
             cout << fixed << setprecision(2); // We set the decimals to 2.
             cout << "You decided to raise " << num1 << " to the exponential " << num2 << " the result is: " << pow(num1,num2) << endl;
             break;
         case 16:
             cout << "Please enter the number so we can compute the natural log of that number.\n";
-            cin >> dnum1;
+            while(!(cin >> dnum1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
             cout << fixed << setprecision(2);
             cout << "The natural log of " << dnum1 << " is: " << natural_Log(dnum1) << endl;
             break;
         case 17:
             cout << "Please enter the number so we can compute the log of that number.\n";
-            cin >> dnum1;
+            while(!(cin >> dnum1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
             cout << fixed << setprecision(2);
             cout << "The log of " << dnum1 << " is: " << Log(dnum1) << endl;
             break;
         case 18:
             cout << "Please enter the value of the hyperbolic Sine.\n";
-            cin >> dnum1;
+            while(!(cin >> dnum1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
             cout << "The value of the hyperbolic Sine is "<< sinh(dnum1) << endl;
             break;
         case 19:
             cout << "Please enter the value of the hyperbolic Cosine.\n";
-            cin >> dnum1;
+            while(!(cin >> dnum1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
             cout << "The value of the hyperbolic Cosine is "<< cosh(dnum1) << endl;
             break;
         case 20:
             cout << "Please enter the value of the hyperbolic Tangent.\n";
-            cin >> dnum1;
+            while(!(cin >> dnum1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
             cout << "The value of the hyperbolic Tangent is "<< tanh(dnum1) << endl;
             break;
         case 21:
             cout << "Please enter x\n";
-            cin >> dnum1;
+            while(!(cin >> dnum1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
             cout << "Please enter y\n";
-            cin >> dnum2;
+            while(!(cin >> dnum2))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
             conjugation(dnum1, dnum2);
             break;
         case 22:
             cout << "Please enter the r\n";
-            cin >> num1;
-            cout << "Please enter the thera\n";
-            cin >> num2;
+            while(!(cin >> num1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << "Please enter the theta\n";
+            while(!(cin >> num2))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
             cout << "This is the conversion from polar to rectangular: \n";
             polar_to_rectangular(num1 , num2);
             break;
         case 23:
             cout << "Please enter your x\n";
-            cin >> num1;
+            while(!(cin >> num1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
             cout << "Please enter your y\n";
-            cin >> num2;
+            while(!(cin >> num2))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
             cout << "This is your conversion from rectangular to polar: \n";
             rectangular_to_polar (num1, num2);
             break;
         case 24:
             cout << "Please enter your n\n";
-            cin >> num1;
+            while(!(cin >> num1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
             cout << "Please enter your r\n";
-            cin >> num2;
+            while(!(cin >> num2))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
             if (num2 > num1)
             {
                 cout << "Please remember r cannot be bigger than n.\n\n";
@@ -337,21 +517,56 @@ void switch_calculator(int op)
             break;
         case 25:
             cout << "Please enter your n\n";
-            cin >> num1;
+             while(!(cin >> num1)) // Loop to validate num1 input.
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+                    while(num1 < 0) // loop to validate num1 is positive.
+                    {
+                        cout << "Please enter your positive number.\n ";
+                        while(!(cin >> num1)) // loop to keep validation of input inside nested loops.
+                            {
+                                cout << "Error. Please enter a number: \n";
+                                cin.clear();
+                                cin.ignore(123, '\n');
+                            }
+                    }
             cout << "Please enter your r\n";
-            cin >> num2;
-            if (num2 > num1)
+            while(!(cin >> num2)) // Loop to validate num2 input.
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+                    while(num2 < 0) // loop to validate num2 is positive.
+                    {
+                        cout << "Please enter your positive number.\n ";
+                        while(!(cin >> num2)) // loop to keep validation of input inside nested loops.
+                            {
+                                cout << "Error. Please enter a number: \n";
+                                cin.clear();
+                                cin.ignore(123, '\n');
+                            }
+                    }
+            if (num2 > num1) // Comparison of numbers to see if the input is invalid.
             {
                 cout << "Please remember r cannot be bigger than n.\n\n";
                 break;
             }
-            else{
+            else{ // else we run the program for permutation.
             cout << per(num1, num2) << endl;
             }
             break;
         case 26:
             cout << "Please enter a number so we can calculate the factorial.\n";
-            cin >> num1;
+            while(!(cin >> num1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
             if (num1 < 0)
             {
                 cout << "Factorial can only be calculated with positive integers.\n";
@@ -360,135 +575,338 @@ void switch_calculator(int op)
                 cout << "The factorial of " << num1 << " is: " << fact(num1) << endl;
             }
             break;
-
-        // Fibonacci not behaving as it is supposed to... Need to take a look at the code.
-        // Same is happening for pascal's, search for errors... bugs case 27-28 lines 311-326
-
-        case 27:
+        case 27: // input number appears with  +1 by the end of the sequence
             cout << "Please enter the number of iterations for the fibonacci sequence\n";
-            cin >> i1;
-            if (i1 > 40)
+            while(!(cin >> i1))
+                {
+                    cout << "Error. Please enter a positive number between 1 and 40: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            while(i1 > 40 || i1 <= 0)
             {
-                cout << "Error, please take into account the memory. This program cannot compute more than 50 iterations.\n";
+                cout << "Error. Please enter a positive number between 1 and 40: \n";
+                cin.clear();
+                cin.ignore(123, '\n');
+                while(!(cin >> i1))
+                {
+                    cout << "Error. Please enter a positive number between 1 and 40: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
             }
-            else{
-                cout << "The fibonacci sequence is: " << fibonacci(i1) << endl;
-            }
+                cout << "The fibonacci sequence is: \n" << fibonacci(i1) << endl;
             break;
         case 28:
-            cout << "Please enter the number for Pascal's triangle.\n";
-            cin >> i1;
-            pasca(i1);
+            cout << "Please enter the number for Pascal's triangle between 1 and 13.\n";
+            while(!(cin >> i1))
+                {
+                    cout << "Error. Please enter a number between 1 and 13: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            while (i1 > 13 || i1 <= 0)
+            {
+                cout << "Error. Please enter a number between 1 and 13: \n";
+                cin.clear();
+                cin.ignore(123, '\n');
+                while(!(cin >> i1))
+                {
+                    cout << "Error. Please enter a number between 1 and 13: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            }
+                genPascalsTriangle(i1);
             break;
         case 29:
             cout << "Please enter the first term of the sequence.\n";
-            cin >> num1;
+            while(!(cin >> num1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
             cout << "Please enter the distance of the sequence.\n";
-            cin >> num2;
+            while(!(cin >> num2))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
             cout << "Please enter the term position of the sequence.\n";
-            cin >> i1;
+            while(!(cin >> i1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
             cout << a_sequence(num1, num2, i1) << endl;
             break;
         case 30:
             cout << "Please enter the first term of the sum.\n";
-            cin >> num1;
+            while(!(cin >> num1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
             cout << "Please enter the distance of the sum.\n";
-            cin >> num2;
+            while(!(cin >> num2))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
             cout << "Please enter the term position of the sum.\n";
-            cin >> i1;
+            while(!(cin >> i1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
             cout << a_sum(num1, num2, i1) << endl;
             break;
-            //gsequence being down by 1 first term sum, dunno why....
+            //Sequence underperforming
         case 31:
             cout << "Please enter the first term of the sequence.\n";
-            cin >> num1;
+            while(!(cin >> num1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
             cout << "Please enter the ratio of the sequence.\n";
-            cin >> num2;
+            while(!(cin >> num2))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
             cout << "Please enter the term position of the sequence.\n";
-            cin >> i1;
+            while(!(cin >> i1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
             cout << fixed;
             cout << g_sequence(num1, num2, i1) << endl;
             break;
         case 32:
             cout << "Please enter the first term of the sum.\n";
-            cin >> num1;
+            while(!(cin >> num1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
             cout << "Please enter the ratio of the sum.\n";
-            cin >> num2;
+            while(!(cin >> num2))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
             cout << "Please enter the term position of the sum.\n";
-            cin >> i1;
+            while(!(cin >> i1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
             cout << fixed;
             cout << g_sum(num1, num2, i1) << endl;
             break;
         case 33:
             float arr[50];
-            cout<<"Enter the size of array: ";
-            cin>>i1;
+            cout << "Enter the size of array: ";
+            while(!(cin >> i1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
             //input in the array
-            cout<<"Enter the elements of array: ";
+            cout << "Enter the elements of array: ";
             for(int i = 0; i < i1; i++)
-            cin>>arr[i];
-            cout<<"\nMean = "<<mean(arr, i1);
+            while (!(cin >> arr[i]))
+                   {
+                       cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                   }
+            cout << "\nMean = "<< mean(arr, i1) << endl;
             break;
     //print mean, median and mode of ungrouped data in array
 
         case 34:
             arr[50];
             cout<<"Enter the size of array: ";
-            cin>>i1;
+            while(!(cin >> i1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
             //input in the array
-            cout<<"Enter the elements of array: ";
+            cout << "Enter the elements of array: ";
             for(int i = 0; i < i1; i++)
-            cin>>arr[i];
-            cout<<"\nMedian = "<<median(arr, i1);
+            while (!(cin >> arr[i]))
+                   {
+                       cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                   }
+            cout << "\nMedian = " << median(arr, i1) << endl;
             break;
         case 35:
             arr[50];
-            cout<<"Enter the size of array: ";
-            cin>>i1;
+            cout << "Enter the size of array: ";
+            while(!(cin >> i1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
             //input in the array
-            cout<<"Enter the elements of array: ";
+            cout << "Enter the elements of array: ";
             for(int i = 0; i < i1; i++)
-            cin>>arr[i];
-            cout<<"\nMode = "<<mode(arr, i1);
+            while (!(cin >> arr[i]))
+                   {
+                       cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                   }
+            cout << "\nMode = " << mode(arr, i1) << endl;
             break;
         case 36:
-            /*float arr[50];
-            cout << "Please enter the size or the array: ";
-            cin >> arr[num1];
-            cin >> i2;
-            cout << standardDeviation(arr[num1], i2);*/
+            arr[50];
+            cout << "Enter the size of array: ";
+            while(!(cin >> i1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            //input in the array
+            cout << "Enter the elements of array: ";
+            for(int i = 0; i < i1; i++)
+            while (!(cin >> arr[i]))
+                   {
+                       cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                   }
+            cout << "\nStandard Deviation = " << standardDeviation(arr, i1) << endl;
             break;
         case 37:
-            //int variance(int a[], int n);
+            arr[50];
+            cout << "Enter the size of array: ";
+            while(!(cin >> i1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            //input in the array
+            cout << "Enter the elements of array: ";
+            for(int i = 0; i < i1; i++)
+            while (!(cin >> arr[i]))
+                   {
+                       cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                   }
+            cout << "\nVariance = " << variance(arr, i1) << endl;
+            break;
             break;
         case 38:
             cout << "Please enter the principal.\n";
-            cin >> num1;
+            while(!(cin >> num1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
             cout << "Please enter your rate.\n";
-            cin >> num2;
+            while(!(cin >> num2))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
             cout << "Please enter the time period of the interest working.\n";
-            cin >> num3;
+            while(!(cin >> num3))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
             cout << "Your simple interest is " << simple_interest(num1, num2, num3) << endl;
             break;
         case 39:
             cout << "Please enter the principal.\n";
-            cin >> num1;
+            while(!(cin >> num1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
             cout << "Please enter your rate.\n";
-            cin >> num2;
+            while(!(cin >> num2))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
             cout << "Please enter the time period of the interest working.\n";
-            cin >> num3;
-            cout << "Your simple interest is " << compound_interest(num1, num2, num3) << endl;
+            while(!(cin >> num3))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << "enter time";
+            while(!(cin >> i1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << "Your simple interest is " << compound_interest(num1, num2, num3, i1) << endl;
             break;
         case 40:
             cout << "Please enter the feed.\n";
-            cin >> num1;
+            while(!(cin >> num1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
             cout << "Please enter your principal.\n";
             cin >> num2;
+            while(!(cin >> num2))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
             cout << "Please enter the interest.\n";
-            cin >> num3;
-            cout << "";
-            cin >> i1;
-            cout << "Your simple interest is " << apr(float fees, float interest, float principal, int n) << endl;
+            while(!(cin >> num3))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << "enter time";
+            while(!(cin >> i1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << "Your simple interest is " << apr(num1, num2, num3, i1) << endl;
             break;
 
 
@@ -670,7 +1088,7 @@ float median(float n)
     return (n+1)/2;
 }
 
-int variance(int a[], int n)
+float variance(float a[], int n)
 {
     // Compute mean (average of elements)
     int sum = 0;
@@ -688,7 +1106,7 @@ int variance(int a[], int n)
     return sqDiff / n;
 }
 
-double standardDeviation(int arr[], int n)
+double standardDeviation(float arr[], int n)
 {
     return sqrt(variance(arr, n));
 }
