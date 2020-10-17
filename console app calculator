@@ -180,7 +180,7 @@ void switch_calculator(int op)
     double dnum1, dnum2, dnum3;
     switch (op)
     {
-        case 1:
+        case 1: // NEED FIX
             cout << "Please enter the first and second number to make the sum." << endl;
             while(!(cin >> num1))
                 {
@@ -197,7 +197,7 @@ void switch_calculator(int op)
             cout << fixed << setprecision(2);
             cout << "Your sum of " << num1 << " and " << num2 << " is " << num1 + num2 << endl;
             break;
-        case 2:
+        case 2: // NEED FIX
             cout << "Please enter the first and second number to make the subtraction.\n The second number will be subtracted from the first.\n" << endl;
             while(!(cin >> num1))
                 {
@@ -214,7 +214,7 @@ void switch_calculator(int op)
             cout << fixed << setprecision(2);
             cout << "Your sum of " << num1 << " and " << num2 << " is " << num1 - num2 << endl;
             break;
-        case 3:
+        case 3: // NEED FIX
             cout << "Please enter the first and second number to make the multiplication.\n" << endl;
             while(!(cin >> num1))
                 {
