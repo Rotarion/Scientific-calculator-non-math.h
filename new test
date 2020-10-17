@@ -1,0 +1,410 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+double e = 2.718281828;
+double pi = 3.1415926535;
+void switch_calculator(int op);
+double fact(int n);
+int comb(int n, int r);  //formula for the combination
+int per(int n, int r);   //formula for the permutation
+float a_sequence(float a, float d, int n);   // Arithmetic sequence formula
+float a_sum(float a, float d, int n);        // Arithmetic summation formula
+float g_sequence(float a, float r, int n);   // Geometric sequence formula
+float g_sum(float a, float r, int n);        // Geometric summation formula
+float simple_interest(float principal, float rate, float time);            // Simple interest formula rate is in % so we use 0.06 for 6%
+float compound_interest(float principal, float rate, float time, int n);   // r is in % so 6% would be 0.06, n is 1 for yearly and t is the amount of time so 3 for 3 years.
+float apr(float fees, float interest, float principal, int n)             // n number of days in loan term, the others are self explanatory, yet interest or fees can be 0.
+float variance(float a[], int n) // this has error
+float sqrt(float m)
+float mean(float arr[], int n){
+double standardDeviation(float arr[], int n)
+double Gsin (double n)
+double Gcos (double n)
+double Gtan (double n)
+double Gcsc (double n)
+double Gsec (double n)
+double Gcotan (double n)
+double asin(double num, double precision = 19){ // Do not use other precision as it is skews.
+double sinh(double n)
+double cosh(double n)
+double tanh(double n)
+double pow(float n, float m)
+double sin(double num, double precision = 19){ // Any values other than 19 in precision and we skew far from the values.
+double cos(double num, double precision = 19){ // Any values other than 19 in precision and we skew far from the values.
+double tan(double num)
+double ln(double n)
+double LOG10(double n)
+void genPascalsTriangle(long n){
+void fibonacci (int n) // Fibonnaci formula
+void polar_to_rectangular(float r , float theta)
+void rectangular_to_polar (float x, float y)
+void conjugation(double n, double m)
+
+int main()
+{
+
+    return 0;
+}
+
+// We need input validation as if any other input it appears it bugs the loop.
+
+
+
+double fact(int n)         //formula for factorial
+{
+    if (n == 0 || n == 1)
+    {
+        return 1;
+    }
+    else
+    {
+        return n * fact(n-1);
+    }
+}
+
+int comb(int n, int r)  //formula for the combination
+{
+   return fact(n) / (fact(r) * fact(n-r)) ;
+}
+
+int per(int n, int r)   //formula for the permutation
+{
+    return fact(n) / fact(n-r);
+}
+
+float a_sequence(float a, float d, int n)   // Arithmetic sequence formula
+{
+    float nthterm;
+    for(int i=0; i <= n; i++)
+    {
+        nthterm = a + (n-1) * d;
+    }
+    return nthterm;
+}
+
+float a_sum(float a, float d, int n)        // Arithmetic summation formula
+{
+    float sum;
+    for(int i=0; i <= n; i++)
+    {
+        sum = (n/2)*(2 * a + (n-1) * d);
+    }
+    return sum;
+}
+
+float g_sequence(float a, float r, int n)   // Geometric sequence formula
+{
+    float nthterm;              // We gold the nth term of the summation.
+    for (int i=0; i <= n; i++)  // We start at 0 an go after n. We can write it without the <= and having only < but we would have to leave n without -1 which is not preferred.
+    {
+        nthterm = a * (pow(r,(n-1)));
+    }
+    return nthterm;
+}
+
+float g_sum(float a, float r, int n)        // Geometric summation formula
+{
+    float sum;
+    for(int i=0; i <= n; i++)
+    {
+        sum = (a * (pow(r,n)-1))/(r-1);
+    }
+    return sum;
+}
+
+float simple_interest(float principal, float rate, float time)            // Simple interest formula rate is in % so we use 0.06 for 6%
+{
+    float result;
+
+    result = principal * (1 + rate * time);
+
+    return result;
+}
+
+float compound_interest(float principal, float rate, float time, int n)   // r is in % so 6% would be 0.06, n is 1 for yearly and t is the amount of time so 3 for 3 years.
+{
+    float result;
+
+    result = principal * (pow((1 + rate / n), (n*time)));
+
+    return result;
+}
+
+float apr(float fees, float interest, float principal, int n)             // n number of days in loan term, the others are self explanatory, yet interest or fees can be 0.
+{
+    float total;
+
+    total = (((( fees + interest) / principal) / n) * 365) * 100;       // Get the % of APR you are paying.
+
+    return total;
+}
+
+float variance(float a[], int n)
+{
+    // Compute mean (average of elements)
+    int sum = 0;
+    for (int i = 0; i < n; i++)
+        sum += a[i];
+    double mean = (double)sum /
+                  (double)n;
+
+    // Compute sum squared
+    // differences with mean.
+    double sqDiff = 0;
+    for (int i = 0; i < n; i++)
+        sqDiff += (a[i] - mean) *
+                  (a[i] - mean);
+    return sqDiff / n;
+}
+
+float sqrt(float m)
+{
+     float i=0;
+   float x1,x2;
+   while( (i*i) <= m )
+        i+=0.1;
+        x1=i;
+   for(int j=0;j<10;j++)
+   {
+        x2=m;
+      x2/=x1;
+      x2+=x1;
+      x2/=2;
+      x1=x2;
+   }
+   return x2;
+}
+
+float mean(float arr[], int n){
+    float sum = 0;
+    for(int i = 0;i < n; i++)
+        sum += arr[i];
+
+    return sum/n;
+}
+/*float median(float arr[], int n){
+    //sort the array
+    sort(arr, arr + n);
+    if(n % 2 == 0)
+        return (arr[n/2 - 1] + arr[n/2])/2;
+    return arr[n/2];
+}
+float mode( float arr[], int n){
+    // Sort the array
+    sort(arr, arr + n);
+
+    //finding max frequency
+    int max_count = 1, res = arr[0], count = 1;
+    for (int i = 1; i < n; i++) {
+        if (arr[i] == arr[i - 1])
+            count++;
+        else {
+            if (count > max_count) {
+                max_count = count;
+                res = arr[i - 1];
+            }
+            count = 1;
+        }
+    }
+
+    // when the last element is most frequent
+    if (count > max_count)
+    {
+        max_count = count;
+        res = arr[n - 1];
+    }
+
+    return res;
+}*/
+
+double standardDeviation(float arr[], int n)
+{
+    return sqrt(variance(arr, n));
+}
+
+double Gsin (double n)
+{
+    return sin(n) * (pi / 180);
+}
+
+double Gcos (double n)
+{
+    return cos(n) * (pi / 180);
+}
+
+double Gtan (double n)
+{
+    return tan(n) * (pi / 180);
+}
+
+double Gcsc (double n)
+{
+    return 1/(sin(n)* (pi / 180));
+}
+
+double Gsec (double n)
+{
+    return 1/(cos(n)* (pi / 180));
+}
+
+double Gcotan (double n)
+{
+    return 1/(tan(n)* (pi / 180));
+}
+double asin(double num, double precision = 19){ // Do not use other precision as it is skews.
+    double value = 0;
+    if (num > 1 || num < -1)
+    {
+       cout << "NaN" << endl;
+    }
+    else{
+    for(int n = 0; n < precision; n++){
+        value += 1.4298*(1/pow(2,2*n)*(pow(num,2*n+1)/(2*n+1)));
+    }
+    return value;
+    }
+}
+double sinh(double n)
+{
+    return  (pow(e,n)-pow(e,-n))/2;
+}
+double cosh(double n)
+{
+    return  (pow(e,n)-pow(e,-n))/2;
+}
+double tanh(double n)
+{
+    return  (pow(e,n)-pow(e,-n))/(pow(e,n)+pow(e,-n));
+}
+double pow(float n, float m)
+{
+    float total = 1;
+    if (m < 0) // in case exponential is negative
+    {
+        float positive;
+        positive = m * -1; //We change signs of the number to positive.
+        for (int i = 0; i < positive; i++)
+        {
+            total *= n;
+        }
+        return 1 / total;
+    }
+    else // in case exponential is positive. DONE
+    {
+        for (int i = 0; i < m; i++)
+            {
+                total *= n;
+            }
+        return total;
+    }
+}
+double sin(double num, double precision = 19){ // Any values other than 19 in precision and we skew far from the values.
+    double value = 0;
+    for(int n = 0; n < precision; n++){ // For loop to calculate the sum of sin.
+        value += pow(-1.0, n) * pow(num, 2*n+1) / factorial(2*n + 1);
+    }
+    return value;
+}
+double cos(double num, double precision = 19){ // Any values other than 19 in precision and we skew far from the values.
+    double value = 0;
+    for(int n = 0; n < precision; n++){ // For loop to calculate the sum of cos.
+        value += pow(-1.0, n) * pow(num, 2*n) / factorial(2*n);
+    }
+    return value;
+}
+double tan(double num)
+{
+    return taylorSine(num)/taylorCos(num); // We use our previous values to get tangent.
+}
+double ln(double n)
+{
+
+    double num, mul, cal, sum = 0;
+    num = (n - 1) / (n + 1);
+
+    // terminating value of the loop
+    // can be increased to improve the precision
+    for (int i = 1; i <= 1000; i++) {
+        mul = (2 * i) - 1;
+        cal = pow(num, mul);
+        cal = cal / mul;
+        sum = sum + cal;
+    }
+    sum = 2 * sum;
+    return sum;
+}
+double LOG10(double n)
+{
+    return (ln(n) / 2.303);
+}
+long nCr(long n, long r){
+   long nume = 1, i;
+   for(i = n; i>r; i--)
+      nume *= i;
+   return long(nume/fact(n-r));//generate result of nCr
+}
+void genPascalsTriangle(long n){
+   for(int i = 0; i<n; i++){
+      for(int j = 0; j<(n-i-1); j++)
+         cout <<setw(3)<< " ";//printing space to show triangular form
+      for(int j = 0; j<(i+1); j++)
+         cout <<setw(3)<< nCr(i, j) <<setw(3)<< " ";
+      cout << endl;
+   }
+}
+void fibonacci (int n) // Fibonnaci formula
+{
+   int t1 = 0, t2 = 1, nextTerm = 0;
+
+    for (int i = 1; i <= n; ++i)
+    {
+        // Prints the first two terms.
+        if(i == 1)
+        {
+            cout << " " << t1 << " ";
+            continue;
+        }
+        if(i == 2)
+        {
+            cout << t2 << " ";
+            continue;
+        }
+        nextTerm = t1 + t2;
+        t1 = t2;
+        t2 = nextTerm;
+
+         cout << nextTerm << " ";
+    }
+}
+void polar_to_rectangular(float r , float theta)
+{
+    double x, y;
+
+    x = r * cos(radian_to_degree(theta));
+    y = r * sin(radian_to_degree(theta));
+
+    cout << "Your x value is " << x << ".\nYour y value is " << y << ".\n" << endl;
+}
+void rectangular_to_polar (float x, float y)
+{
+    double r, theta;
+
+    r = sqrt(pow(x, 2) + pow (y, 2));
+    theta = atan (y / x) * 180 / pi;
+
+    cout << "Your r value is " << r << ".\nYour angle value is " << theta << " degrees.\n";
+}
+void conjugation(double n, double m)
+{
+    cout << "The conjugate of ("<< n <<","<< m << ") is (" << n << "," << -1*m << ")"<< endl;
+}
+
+/*
+Case 7,10 error: call of overloaded 'tan(float&)' is ambiguous
+    11 asin not declared
+    12 acos not declared
+    13 atan not declared
+    34,35,36 median,mean,mode not declared
+
+*/
