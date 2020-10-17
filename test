@@ -5,63 +5,45 @@ using namespace std;
 double e = 2.718281828;
 double pi = 3.1415926535;
 void switch_calculator(int op);
-int fact(int n);
-int comb(int n, int r); // n has be higher than r
-int per(int n, int r);  // n has be higher than r
-float a_sequence(float a, float d, int n);
-float a_sum(float a, float d, int n);
-float g_sequence(float a, float r, int n);
-float g_sum(float a, float r, int n);
-float simple_interest(float principal, float rate, float time);
-float compound_interest(float principal, float rate, float time, int n);
-float apr(float fees, float interest, float principal, int n);
-float amean(float sum, float numberTerms);
-float amedian(float n);
-float variance(float a[], int n);
+double fact(int n);
+int comb(int n, int r);  //formula for the combination
+int per(int n, int r);   //formula for the permutation
+float a_sequence(float a, float d, int n);   // Arithmetic sequence formula
+float a_sum(float a, float d, int n);        // Arithmetic summation formula
+float g_sequence(float a, float r, int n);   // Geometric sequence formula
+float g_sum(float a, float r, int n);        // Geometric summation formula
+float simple_interest(float principal, float rate, float time);            // Simple interest formula rate is in % so we use 0.06 for 6%
+float compound_interest(float principal, float rate, float time, int n);   // r is in % so 6% would be 0.06, n is 1 for yearly and t is the amount of time so 3 for 3 years.
+float apr(float fees, float interest, float principal, int n);             // n number of days in loan term, the others are self explanatory, yet interest or fees can be 0.
+float variance(float a[], int n); // this has error
 float sqrt(float m);
-double sin(double num, double precision);
-double cos(double num, double precision);
-double tan(double num, double precision);
-float mean(float arr[], int n);
+float mean(float arr[], int n){;
 double standardDeviation(float arr[], int n);
-double radian_to_degree(float n);
-double Gsin (float n);   
-double Gcos (float n);   
-double Gtan (float n);   
-double Gcsc (float n);   
-double Gsec (float n);   
-double Gcotan (float n); 
-double asini(double num, double precision = 19){ // Do not use other precision as it is skews.
-    double value = 0;
-    if (num > 1 || num < -1)
-    {
-       cout << "NaN" << endl;
-    }
-    else{
-    for(int n = 0; n < precision; n++){
-        value += 1.4298*(1/pow(2,2*n)*(pow(num,2*n+1)/(2*n+1)));
-    }
-    return value;
-    }
-}
-double InvCos (float n); 
-double InvTan (float n); 
+double Gsin (double n);
+double Gcos (double n);
+double Gtan (double n);
+double Gcsc (double n);
+double Gsec (double n);
+double Gcotan (double n);
+double asin(double num, double precision = 19){ // Do not use other precision as it is skews.
 double sinh(double n);
 double cosh(double n);
 double tanh(double n);
-double pow(float n,float m);
+double pow(float n, float m)
+double sin(double num, double precision = 19){ // Any values other than 19 in precision and we skew far from the values.
+double cos(double num, double precision = 19){ // Any values other than 19 in precision and we skew far from the values.
+double tan(double num);
 double ln(double n);
 double LOG10(double n);
-void conjugation (double n, double m);  // Not working due to complex library taken out.
-void genPascalsTriangle(long n);
+void genPascalsTriangle(long n){
+void fibonacci (int n); // Fibonnaci formula
 void polar_to_rectangular(float r , float theta);
-void rectangular_to_polar (float x, float y); // Not working atan not declared
-void fibonacci (int n);
-long nCr(long n, long r);
+void rectangular_to_polar (float x, float y);
+void conjugation(double n, double m);
 
 int main()
 {
-   
+
     return 0;
 }
 
