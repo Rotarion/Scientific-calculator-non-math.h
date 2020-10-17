@@ -26,10 +26,11 @@ double Gcsc (double n);
 double Gsec (double n);
 double Gcotan (double n);
 double asin(double num, double precision = 19){ // Do not use other precision as it is skews.
+                                                // line 28 has error also lines 401.
 double sinh(double n);
 double cosh(double n);
 double tanh(double n);
-double pow(float n, float m)
+double pow(float n, float m);
 double sin(double num, double precision = 19){ // Any values other than 19 in precision and we skew far from the values.
 double cos(double num, double precision = 19){ // Any values other than 19 in precision and we skew far from the values.
 double tan(double num);
