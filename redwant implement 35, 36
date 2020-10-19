@@ -1,0 +1,138 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+
+double calculateMedian(int *, int);
+int calculateMode(int *, int);
+void bubbleSort(int *, int);
+
+int main()
+{
+    int op;
+
+    cout << "input\n";
+    cin >> op;
+
+    while(op != 0)
+    {
+        switch (op)
+        {
+            case 35:
+
+                break;
+            case 36:
+
+                break;
+            default: cout << "error" << endl;
+        }
+    }
+}
+void bubbleSort(int *nums, int arry)
+{
+    int temp;
+    for (int i = 0; i < arry; i++){
+        for (int j = i + 1; j < arry; j++){
+            if (nums[i] > nums[j])
+{
+                temp = nums[i];
+                nums[i] = nums[j];
+                nums[j] = temp;
+            }
+        }
+    }
+}
+double calculateMedian(int *nums, int arry)
+{
+    double median = 0.0;
+    cout << fixed << showpoint << setprecision(1);
+
+
+    if (arry % 2 == 0)
+    {
+        median = (nums[arry/ 2 - 1] + nums[(arry / 2)]) / 2.0;
+    }
+    else
+        median = nums[arry / 2];
+
+    return median;
+}
+
+
+int calculateMode(int *nums, int arry)
+{
+    int mode = 0;
+    int val = 0;
+    int index;
+
+
+    for (index = 0; index < arry - 1; index++)  // note the - 1 here
+    {
+        if (nums[index] == nums[index + 1])
+        {
+            mode++;
+            val = *(nums + index);
+        }
+    }
+    if (val > 0)
+        return val;
+    else
+        return 0;
+
+}
+
+/*
+int main()
+{
+    int *nums;
+    int arry;
+    char repeat = ' ';
+
+    do
+    {
+
+
+        cout << "Enter arry: ";
+        while (!(cin >> arry) || arry <= 0)
+        {
+            cout << "Error, Please enter a + num: \n";
+            cin.clear();
+            cin.ignore(123, '\n');
+        }
+
+
+        nums = new int[arry];
+
+
+        for (int count = 0; count < arry; count++)
+        {
+            cout << "Number #" << (count + 1) << ": ";
+            cin >> nums[count];
+
+        }
+        bubbleSort(nums, arry);
+
+        cout << fixed << showpoint << setprecision(1);
+
+
+
+        cout << "\nThe median is: ";
+        cout << calculateMedian(nums, arry) << endl;
+
+        cout << "\nThe mode is: ";
+        cout << calculateMode(nums, arry) << endl;
+
+        delete[] nums;
+        nums = 0;
+
+        cout << "Do you want to go again? Y for Yes, N for No.";
+        cin >> repeat;
+
+
+    } while (repeat == 'Y' || repeat == 'y');
+    cout << "Program ending.\n";
+
+    return 0;
+}
+*/
+
