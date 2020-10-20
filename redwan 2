@@ -537,6 +537,7 @@ void switch_calculator(int op) // every "while(!(cin >> input))" is an input val
                 }
             cout << fixed << setprecision(2); // Setting it in two decimal places.
             cout << "Your sum of " << num1 << " and " << num2 << " is " << num1 + num2 << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
             break;
         case 2:    // SUBTRACTION
             cout << "Please enter the first and second number to make the subtraction.\nThe second number will be subtracted from the first." << endl;
@@ -554,6 +555,7 @@ void switch_calculator(int op) // every "while(!(cin >> input))" is an input val
                 }
             cout << fixed << setprecision(2); // Setting it in two decimal places.
             cout << "Your sum of " << num1 << " and " << num2 << " is " << num1 - num2 << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
             break;
         case 3: // MULTIPLICATION
             cout << "Please enter the first and second number to make the multiplication." << endl;
@@ -571,6 +573,7 @@ void switch_calculator(int op) // every "while(!(cin >> input))" is an input val
                 }
             cout << fixed << setprecision(2); // Setting it in two decimal places.
             cout << "Your multiplication of " << num1 << " by " << num2 << " is " << num1 * num2 << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
             break;
         case 4:  // DIVISION
             cout << "Please enter the first and second number to make the division.\nThe first number will be divided by the second.\n";
