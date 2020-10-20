@@ -1151,7 +1151,8 @@ void switch_calculator(int op) // every "while(!(cin >> input))" is an input val
                 char repeat = ' ';
 
                 cout << "Enter size of the arry: " << endl;
-                while (!(cin >> arry) || arry <= 0)
+                // We cannot have a negative size array so we validate input and put restrictions
+                while (!(cin >> arry) || arry <= 0) 
                 {
                     cout << "Error, Please enter a positive number: \n";
                     cin.clear();
@@ -1184,6 +1185,7 @@ void switch_calculator(int op) // every "while(!(cin >> input))" is an input val
         case 36:  // STANDRAD DEVIATION
             arr[50];
             cout << "Enter the size of array: \n";
+            // We cannot have a negative size array so we validate input and put restrictions
             while(!(cin >> i1) || i1 <=0)
                 {
                     cout << "Error. Please enter the size it cannot be 0 or negative: \n";
