@@ -78,7 +78,7 @@ int main()
          << "*  18. Hyperbolic Sine               38. Simple Interest      *\n"
          << "*  19. Hyperbolic Cosine             39. Compound Interest    *\n"
          << "*  20. Hyperbolic Tangent            40. APR Financing        *\n"
-         << "*  0. to exit the program.                                    *\n"
+         << "*  0 or any other character to exit the program.              *\n"
          << "***************************************************************\n";
     cin >> op;
 
@@ -108,7 +108,7 @@ int main()
          << "*  18. Hyperbolic Sine               38. Simple Interest      *\n"
          << "*  19. Hyperbolic Cosine             39. Compound Interest    *\n"
          << "*  20. Hyperbolic Tangent            40. APR Financing        *\n"
-         << "*  0. to exit the program.                                    *\n"
+         << "*  0 or any other character to exit the program.              *\n"
          << "***************************************************************\n";
     cin >> op;
     }
@@ -237,7 +237,7 @@ float variance(float a[], int n)
                   (a[i] - mean);
     return sqDiff / n;
 }
-float sqrt(float m)
+float sqrt(float m) //Formula for square rooting a number.
 {
    float i=0;
    float x1,x2;
@@ -288,14 +288,16 @@ double pow(float n, float m)
             }
         return total;
     }
+    else if (m == 0) // in case exp is 0 we return 1.
+        return 1;
 }
 double sin(float x)
 {
     double result = 1;
-    double mxx = -x*x;
+    double mxx = -x*x;                                 // Multiplying the variable
     double addens = 1;
-    double temp = 2;
-    for(int n = 2; n <= 200; n++)
+    double temp = 2;                                   // Init of temp
+    for(int n = 2; n <= 200; n++)                      // For loop to do Sine, n can be increased for accuracy 
     {
         addens *= mxx/temp++/temp++;
         result += addens;
@@ -305,10 +307,10 @@ double sin(float x)
 double cos(float x)
 {
     double result = 1;
-    double mxx = -x*x;
+    double mxx = -x*x;                                 // Multiplying the variable
     double addens = 1;
-    double temp = 1;
-    for(int n = 2; n <= 200; n++)
+    double temp = 1;                                   // Init of temp
+    for(int n = 2; n <= 200; n++)                      // For loop to do Cosine, n can be increased for accuracy 
     {
         //cout << "This is the iteneration number: " << n << endl;
         addens *= mxx/temp++/temp++;
@@ -326,15 +328,15 @@ double tan(float num)
 }
 double sinh(double n)
 {
-    return  (pow(e,n)-pow(e,-n))/2;
+    return  (pow(e,n)-pow(e,-n))/2;                     // Math functions for hypberolic trig.
 }
 double cosh(double n)
 {
-    return  (pow(e,n)-pow(e,-n))/2;
+    return  (pow(e,n)-pow(e,-n))/2;                     // Math functions for hypberolic trig.
 }
 double tanh(double n)
 {
-    return  (pow(e,n)-pow(e,-n))/(pow(e,n)+pow(e,-n));
+    return  (pow(e,n)-pow(e,-n))/(pow(e,n)+pow(e,-n));  // Math functions for hypberolic trig.
 }
 double asin(double num, double precision = 19)
 { // Do not use other precision as it is skews.
@@ -344,7 +346,8 @@ double asin(double num, double precision = 19)
        cout << "NaN" << endl;
     }
     else{
-    for(int n = 0; n < precision; n++){ //
+    for(int n = 0; n < precision; n++) // For loop to calculate the sum of invsine
+    { 
         value += 1.4298004337*(1/pow(2,2*n)*(pow(num,2*n+1)/(2*n+1)));
     }
     return value;
@@ -357,7 +360,8 @@ double acos(double num, double precision = 19)
 double atan(double x)
 { // Any values other than 19 in precision and we skew far from the values.
     double value = 0;
-    for(int n = 0; n < 29; n++){ // For loop to calculate the sum of invtan.
+    for(int n = 0; n < 29; n++) // For loop to calculate the sum of invtan.
+    { 
         value += pow(-1.0, n) * pow(x, 2*n+1) / (2*n + 1);
     }
     return value;
