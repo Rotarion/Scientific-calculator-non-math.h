@@ -261,7 +261,7 @@ float mean(float arr[], int n){
     for(int i = 0;i < n; i++)
         sum += arr[i];
 
-    return sum/n;   // 
+    return sum/n;   //
 }
 double standardDeviation(float arr[], int n)
 {
@@ -289,7 +289,7 @@ double pow(float n, float m)
                 total *= n;
             }
         return total;
-    }  
+    }
 }
 double sin(float x)
 {
@@ -297,7 +297,7 @@ double sin(float x)
     double mxx = -x*x;                                 // Multiplying the variable
     double addens = 1;
     double temp = 2;                                   // Init of temp
-    for(int n = 2; n <= 200; n++)                      // For loop to do Sine, n can be increased for accuracy 
+    for(int n = 2; n <= 200; n++)                      // For loop to do Sine, n can be increased for accuracy
     {
         addens *= mxx/temp++/temp++;
         result += addens;
@@ -310,7 +310,7 @@ double cos(float x)
     double mxx = -x*x;                                 // Multiplying the variable
     double addens = 1;
     double temp = 1;                                   // Init of temp
-    for(int n = 2; n <= 200; n++)                      // For loop to do Cosine, n can be increased for accuracy 
+    for(int n = 2; n <= 200; n++)                      // For loop to do Cosine, n can be increased for accuracy
     {
         //cout << "This is the iteneration number: " << n << endl;
         addens *= mxx/temp++/temp++;
@@ -324,7 +324,9 @@ double cos(float x)
 }
 double tan(float num)
 {
-    return sin(num)/tan(num); // We use our previous values to get tangent.
+    float a = sin(num);
+    float b = cos(num);
+    return a/b; // We use our previous values to get tangent.
 }
 double sinh(double n)
 {
@@ -347,7 +349,7 @@ double asin(double num, double precision = 19)
     }
     else{
     for(int n = 0; n < precision; n++) // For loop to calculate the sum of invsine
-    { 
+    {
         value += 1.4298004337*(1/pow(2,2*n)*(pow(num,2*n+1)/(2*n+1)));
     }
     return value;
@@ -361,7 +363,7 @@ double atan(double x)
 { // Any values other than 19 in precision and we skew far from the values.
     double value = 0;
     for(int n = 0; n < 29; n++) // For loop to calculate the sum of invtan.
-    { 
+    {
         value += pow(-1.0, n) * pow(x, 2*n+1) / (2*n + 1);
     }
     return value;
@@ -433,7 +435,7 @@ double calculateMedian(int *nums, int arry)
 
     return median;
 }
-long nCr(long n , long r) 
+long nCr(long n , long r)
 {
    long nume = 1, i;
    for(i = n; i>r; i--)
@@ -656,7 +658,7 @@ void switch_calculator(int op) // every "while(!(cin >> input))" is an input val
             }
             else
             cout << "This is the Tangent in degrees: " << Gtan(num1) << endl;
-        cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
             break;
         case 8:   //SECANT
             cout << "Please enter the number corresponding to the Secant.\n";
