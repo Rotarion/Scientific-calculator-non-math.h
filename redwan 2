@@ -261,7 +261,7 @@ float mean(float arr[], int n){
     for(int i = 0;i < n; i++)
         sum += arr[i];
 
-    return sum/n;   //
+    return sum/n;   // 
 }
 double standardDeviation(float arr[], int n)
 {
@@ -289,7 +289,7 @@ double pow(float n, float m)
                 total *= n;
             }
         return total;
-    }
+    }  
 }
 double sin(float x)
 {
@@ -297,7 +297,7 @@ double sin(float x)
     double mxx = -x*x;                                 // Multiplying the variable
     double addens = 1;
     double temp = 2;                                   // Init of temp
-    for(int n = 2; n <= 200; n++)                      // For loop to do Sine, n can be increased for accuracy
+    for(int n = 2; n <= 200; n++)                      // For loop to do Sine, n can be increased for accuracy 
     {
         addens *= mxx/temp++/temp++;
         result += addens;
@@ -310,7 +310,7 @@ double cos(float x)
     double mxx = -x*x;                                 // Multiplying the variable
     double addens = 1;
     double temp = 1;                                   // Init of temp
-    for(int n = 2; n <= 200; n++)                      // For loop to do Cosine, n can be increased for accuracy
+    for(int n = 2; n <= 200; n++)                      // For loop to do Cosine, n can be increased for accuracy 
     {
         //cout << "This is the iteneration number: " << n << endl;
         addens *= mxx/temp++/temp++;
@@ -349,7 +349,7 @@ double asin(double num, double precision = 19)
     }
     else{
     for(int n = 0; n < precision; n++) // For loop to calculate the sum of invsine
-    {
+    { 
         value += 1.4298004337*(1/pow(2,2*n)*(pow(num,2*n+1)/(2*n+1)));
     }
     return value;
@@ -363,7 +363,7 @@ double atan(double x)
 { // Any values other than 19 in precision and we skew far from the values.
     double value = 0;
     for(int n = 0; n < 29; n++) // For loop to calculate the sum of invtan.
-    {
+    { 
         value += pow(-1.0, n) * pow(x, 2*n+1) / (2*n + 1);
     }
     return value;
@@ -435,7 +435,7 @@ double calculateMedian(int *nums, int arry)
 
     return median;
 }
-long nCr(long n , long r)
+long nCr(long n , long r) 
 {
    long nume = 1, i;
    for(i = n; i>r; i--)
@@ -754,6 +754,7 @@ void switch_calculator(int op) // every "while(!(cin >> input))" is an input val
                 }
             cout << fixed << setprecision(2); // We set the decimals to 2.
             cout << "You raise e to the " << num1 << " The result is: " << pow(e,num1) << "." << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
             break;
         case 15:// EXPONENTIAL OF X TO THE N
             cout << "Please enter the number x and then enter the exponential.\n";
@@ -771,20 +772,22 @@ void switch_calculator(int op) // every "while(!(cin >> input))" is an input val
                 }
             cout << fixed << setprecision(2); // We set the decimals to 2.
             cout << "You decided to raise " << num1 << " to the exponential " << num2 << " the result is: " << pow(num1,num2) << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
             break;
         case 16:// NATURAL LOG
             cout << "Please enter the number so we can compute the natural log of that number.\n";
             while(!(cin >> dnum1))
                 {
-                    cout << "Error. Please enter a number: \n";
+                    cout << "Error. Please enter a number for the natural log(ln): \n";
                     cin.clear();
                     cin.ignore(123, '\n');
                 }
             cout << fixed << setprecision(2);
             cout << "The natural log of " << dnum1 << " is: " << ln(dnum1) << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
             break;
         case 17:// LOG
-            cout << "Please enter the number so we can compute the log of that number.\n";
+            cout << "Please enter the number so we can compute the log of base 10 of that number.\n";
             while(!(cin >> dnum1))
                 {
                     cout << "Error. Please enter a number: \n";
@@ -793,6 +796,7 @@ void switch_calculator(int op) // every "while(!(cin >> input))" is an input val
                 }
             cout << fixed << setprecision(2);
             cout << "The log of " << dnum1 << " is: " << LOG10(dnum1) << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
             break;
         case 18:// HYPERBOLIC SINE
             cout << "Please enter the value of the hyperbolic Sine.\n";
@@ -803,6 +807,7 @@ void switch_calculator(int op) // every "while(!(cin >> input))" is an input val
                     cin.ignore(123, '\n');
                 }
             cout << "The value of the hyperbolic Sine is "<< sinh(dnum1) << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
             break;
         case 19:// HYPERBOLIC COSINE
             cout << "Please enter the value of the hyperbolic Cosine.\n";
@@ -813,6 +818,7 @@ void switch_calculator(int op) // every "while(!(cin >> input))" is an input val
                     cin.ignore(123, '\n');
                 }
             cout << "The value of the hyperbolic Cosine is "<< cosh(dnum1) << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
             break;
         case 20:// HYPERBOLIC TANGENT
             cout << "Please enter the value of the hyperbolic Tangent.\n";
@@ -823,6 +829,7 @@ void switch_calculator(int op) // every "while(!(cin >> input))" is an input val
                     cin.ignore(123, '\n');
                 }
             cout << "The value of the hyperbolic Tangent is "<< tanh(dnum1) << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
             break;
         case 21: // CONJUGATION
             cout << "Please enter x\n";
@@ -840,6 +847,7 @@ void switch_calculator(int op) // every "while(!(cin >> input))" is an input val
                     cin.ignore(123, '\n');
                 }
             conjugation(dnum1, dnum2);
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Redwan Ahmed.\n\n";
             break;
         case 22: // POLAR TO RECTANGULAR
             cout << "Please enter the r\n";
@@ -858,6 +866,7 @@ void switch_calculator(int op) // every "while(!(cin >> input))" is an input val
                 }
             cout << "This is the conversion from polar to rectangular: \n";
             polar_to_rectangular(num1 , num2);
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Redwan Ahmed.\n\n";
             break;
         case 23: // RECTUNGULAR TO POLAR
             cout << "Please enter your x\n";
@@ -876,6 +885,7 @@ void switch_calculator(int op) // every "while(!(cin >> input))" is an input val
                 }
             cout << "This is your conversion from rectangular to polar: \n";
             rectangular_to_polar (num1, num2);
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Redwan Ahmed.\n\n";
             break;
         case 24: // COMBINATION
             cout << "Please enter your n\n";
@@ -899,6 +909,7 @@ void switch_calculator(int op) // every "while(!(cin >> input))" is an input val
             }
             else{
             cout << comb(num1, num2) << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Redwan Ahmed and Roy Gao.\n\n";
             }
             break;
         case 25:  // PERMUTATION
@@ -921,8 +932,10 @@ void switch_calculator(int op) // every "while(!(cin >> input))" is an input val
                 cout << "Please remember r cannot be bigger than n.\n\n";
                 break;
             }
-            else{ // else we run the program for permutation.
+            else
+            { // else we run the program for permutation.
             cout << per(num1, num2) << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Redwan Ahmed.\n\n";
             }
             break;
         case 26:  // // FACTORIAL
@@ -936,10 +949,12 @@ void switch_calculator(int op) // every "while(!(cin >> input))" is an input val
             if (num1 < 0)
             {
                 cout << "Factorial can only be calculated with positive integers.\n";
+                cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Redwan Ahmed.\n\n";
             }
             else
             {
                 cout << fixed << setprecision(2) << "The factorial of " << num1 << " is: " << fact(num1) << endl;
+                cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Redwan Ahmed.\n\n";
             }
             break;
         case 27:  // FIBONACCI
@@ -952,6 +967,7 @@ void switch_calculator(int op) // every "while(!(cin >> input))" is an input val
                 }
                 cout << "The fibonacci sequence is: \n";
                 fibonacci(i1);
+                cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Redwan Ahmed.\n\n";
                 cout << endl;
             break;
         case 28:  // PASCAL'S TRIANGLE
@@ -963,6 +979,7 @@ void switch_calculator(int op) // every "while(!(cin >> input))" is an input val
                     cin.ignore(123, '\n');
                 }
                 genPascalsTriangle(i1);
+                cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Redwan Ahmed.\n\n";
             break;
         case 29:   // ARITHMETIC SEQUENCE
             cout << "Please enter the first term of the sequence.\n";
@@ -987,6 +1004,7 @@ void switch_calculator(int op) // every "while(!(cin >> input))" is an input val
                     cin.ignore(123, '\n');
                 }
             cout << a_sequence(num1, num2, i1) << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Redwan Ahmed.\n\n";
             break;
         case 30:   // ARITHMETIC SUM
             cout << "Please enter the first term of the sum.\n";
@@ -1011,6 +1029,7 @@ void switch_calculator(int op) // every "while(!(cin >> input))" is an input val
                     cin.ignore(123, '\n');
                 }
             cout << a_sum(num1, num2, i1) << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Redwan Ahmed.\n\n";
             break;
         case 31:  //GEOMETRIC SEQUENCE
             cout << "Please enter the first term of the sequence.\n";
@@ -1036,6 +1055,7 @@ void switch_calculator(int op) // every "while(!(cin >> input))" is an input val
                 }
             cout << fixed;
             cout << g_sequence(num1, num2, i1) << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Redwan Ahmed.\n\n";
             break;
         case 32:   // GEOMETRIC SUM
             cout << "Please enter the first term of the sum.\n";
@@ -1060,6 +1080,7 @@ void switch_calculator(int op) // every "while(!(cin >> input))" is an input val
                     cin.ignore(123, '\n');
                 }
             cout << fixed << setprecision(3) << g_sum(num1, num2, i1) << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Redwan Ahmed.\n\n";
             break;
         case 33:  // MEAN
             float arr[50];
@@ -1084,6 +1105,7 @@ void switch_calculator(int op) // every "while(!(cin >> input))" is an input val
             }
 
             cout << "\nMean = "<< mean(arr, i1) << endl;
+            cout << "This result is brought to you by the programmer Redwan Ahmed and tested by Pablo Cabrera.\n\n";
             break;
         case 34:  //MEDIAN
             {
@@ -1116,6 +1138,7 @@ void switch_calculator(int op) // every "while(!(cin >> input))" is an input val
 
                 cout << "\nThe median is: ";
                 cout << calculateMedian(nums, arry) << endl;
+                cout << "This result is brought to you by the programmer Redwan Ahmed and tested by Pablo Cabrera.\n\n";
                 delete[] nums;
                 nums = 0;
             }
@@ -1152,6 +1175,7 @@ void switch_calculator(int op) // every "while(!(cin >> input))" is an input val
 
                 cout << "\nThe mode is: ";
                 cout << calculateMode(nums, arry) << endl;
+                cout << "This result is brought to you by the programmer Redwan Ahmed and tested by Pablo Cabrera.\n\n";
                 delete[] nums;
                 nums = 0;
                 }
@@ -1179,6 +1203,7 @@ void switch_calculator(int op) // every "while(!(cin >> input))" is an input val
                    }
             }
             cout << "\nStandard Deviation = " << standardDeviation(arr, i1) << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by himself.\n\n";
             break;
         case 37:  // VARIANCE
             arr[50];
@@ -1202,6 +1227,7 @@ void switch_calculator(int op) // every "while(!(cin >> input))" is an input val
                    }
             }
             cout << "\nVariance = " << variance(arr, i1) << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by himself.\n\n";
             break;
         case 38:  // SIMPLE INTEREST
             cout << "Please enter the principal.\n";
@@ -1225,7 +1251,8 @@ void switch_calculator(int op) // every "while(!(cin >> input))" is an input val
                     cin.clear();
                     cin.ignore(123, '\n');
                 }
-            cout << "Your simple interest is " << simple_interest(num1, num2, num3) << endl;
+            cout << "Your simple interest is " << simple_interest(num1, num2, num3) - num1 << " .Your total ammount is: " << simple_interest(num1, num2, num3) << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by himself.\n\n";
             break;
         case 39:  // COMPOUND INTEREST
             cout << "Please enter the principal.\n";
@@ -1258,6 +1285,7 @@ void switch_calculator(int op) // every "while(!(cin >> input))" is an input val
                 }
             cout << "Your compound interest made you " << compound_interest(num1, num2, num3, i1) - num1 << " .Your total is: "
                  << compound_interest(num1, num2, num3, i1) <<  endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by himself.\n\n";
             break;
         case 40: // NOT WORKING NEED FIXED!!!!!!!!!!!    // APR FINANCING
             cout << "Please enter the fees you are paying.\n";
