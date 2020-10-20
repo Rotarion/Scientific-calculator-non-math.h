@@ -1251,7 +1251,7 @@ void switch_calculator(int op) // every "while(!(cin >> input))" is an input val
                     cin.clear();
                     cin.ignore(123, '\n');
                 }
-            cout << "Your simple interest is " << simple_interest(num1, num2, num3) - num1 << " .Your total ammount is: " << simple_interest(num1, num2, num3) << endl;
+            cout << "Your simple interest is $" << simple_interest(num1, num2, num3) - num1 << ". Your total ammount is: $" << simple_interest(num1, num2, num3) << endl;
             cout << "This result is brought to you by the programmer Pablo Cabrera and tested by himself.\n\n";
             break;
         case 39:  // COMPOUND INTEREST
@@ -1283,8 +1283,8 @@ void switch_calculator(int op) // every "while(!(cin >> input))" is an input val
                     cin.clear();
                     cin.ignore(123, '\n');
                 }
-            cout << "Your compound interest made you " << compound_interest(num1, num2, num3, i1) - num1 << " .Your total is: "
-                 << compound_interest(num1, num2, num3, i1) <<  endl;
+            cout << "Your compound interest made you $" << compound_interest(num1, num2, num3, i1) - num1 << ". Your total is: $"
+                 << compound_interest(num1, num2, num3, i1) << endl;
             cout << "This result is brought to you by the programmer Pablo Cabrera and tested by himself.\n\n";
             break;
         case 40: // NOT WORKING NEED FIXED!!!!!!!!!!!    // APR FINANCING
@@ -1317,6 +1317,7 @@ void switch_calculator(int op) // every "while(!(cin >> input))" is an input val
                     cin.ignore(123, '\n');
                 }
             cout << fixed << setprecision(2) << apr(num1, num2, num3, i1) << "is your APR." << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by himself.\n\n";
             break;
 
         // switch default for non knowing operators
