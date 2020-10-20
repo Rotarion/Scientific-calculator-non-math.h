@@ -598,6 +598,8 @@ void switch_calculator(int op) // every "while(!(cin >> input))" is an input val
             {
                cout << fixed << setprecision(2); // Setting it to two decimal places.
                cout << "The division of " << num1 << " by " << num2 << " is " << num1 / num2 << endl;
+               cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
+
             }
             break;
         case 5:  // SINE
@@ -608,7 +610,14 @@ void switch_calculator(int op) // every "while(!(cin >> input))" is an input val
                     cin.clear();
                     cin.ignore(123, '\n');
                 }
+            if (num1 == 0)
+            {
+                cout << "This is the Sine in degrees: 0" << endl;
+                cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
+            }
+            else
             cout << "This is the Sine in degrees: " << Gsin(num1) << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
             break;
         case 6:   //COSINE
             cout << "Please enter the number corresponding to the Cosine.\n";
@@ -618,7 +627,14 @@ void switch_calculator(int op) // every "while(!(cin >> input))" is an input val
                     cin.clear();
                     cin.ignore(123, '\n');
                 }
+            if (num1 == 90)
+            {
+                cout << "This is the Cosine in degrees: 0" << endl;
+                cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
+            }
+            else
             cout << "This is the Cosine in degrees: " << Gcos(num1) << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
             break;
         case 7:   //TANGENT
             cout << "Please enter the number corresponding to the Tangent.\n";
@@ -628,7 +644,19 @@ void switch_calculator(int op) // every "while(!(cin >> input))" is an input val
                     cin.clear();
                     cin.ignore(123, '\n');
                 }
+            if (num1 == 90)
+            {
+                cout << "This is not possible to compute" << endl;
+                cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
+            }
+            else if (num1 == 0)
+            {
+                cout << "This is the tan in degrees: 0" << endl;
+                cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
+            }
+            else
             cout << "This is the Tangent in degrees: " << Gtan(num1) << endl;
+        cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
             break;
         case 8:   //SECANT
             cout << "Please enter the number corresponding to the Secant.\n";
@@ -638,7 +666,14 @@ void switch_calculator(int op) // every "while(!(cin >> input))" is an input val
                     cin.clear();
                     cin.ignore(123, '\n');
                 }
+            if (num1 == 0)
+            {
+                cout << "This is not possible to compute" << endl;
+                cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
+            }
+            else
             cout << "This is the Secant in degrees: " << 1/Gsin(num1) << endl;
+        cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
             break;
         case 9:   //COSECANT
             cout << "Please enter the number corresponding to the Cosecant.\n";
@@ -648,6 +683,12 @@ void switch_calculator(int op) // every "while(!(cin >> input))" is an input val
                     cin.clear();
                     cin.ignore(123, '\n');
                 }
+            if (num1 == 90)
+            {
+                cout << "This is not possible to compute" << endl;
+                cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
+            }
+            else
             cout << "This is the Cosecant in degrees: " << 1/Gcos(num1) << endl;
             break;
         case 10:  //COTANGENT
@@ -658,7 +699,14 @@ void switch_calculator(int op) // every "while(!(cin >> input))" is an input val
                     cin.clear();
                     cin.ignore(123, '\n');
                 }
+            if (num1 == 90 || num1 == 0)
+            {
+                cout << "This is not possible to compute" << endl;
+                cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
+            }
+            else
             cout << "This is the Cotangent in degrees: " << 1/Gtan(num1) << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
             break;
 
         case 11://INVERSE SINE
@@ -670,6 +718,7 @@ void switch_calculator(int op) // every "while(!(cin >> input))" is an input val
                     cin.ignore(123, '\n');
                 }
             cout << "This is the Inverse Sine in radians: " << asin(num1)  << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
             break;
         case 12://INVERSE COSINE
             cout << "Please enter the number corresponding to the  Inverse Cosine.\n";
@@ -680,6 +729,7 @@ void switch_calculator(int op) // every "while(!(cin >> input))" is an input val
                     cin.ignore(123, '\n');
                 }
             cout << "This is the Inverse Cosine in radians: " << acos(num1) << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
             break;
         case 13://INVERSE TANGENT
             cout << "Please enter the number corresponding to the Inverse Tangent.\n";
@@ -690,6 +740,7 @@ void switch_calculator(int op) // every "while(!(cin >> input))" is an input val
                     cin.ignore(123, '\n');
                 }
             cout << "This is the Inverse Tangent in radians: " << atan(num1) << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
             break;
         case 14:// EXPONENTIAL OF E TO THE X
             cout << "Please enter the number so we can raise e to that number.\n";
