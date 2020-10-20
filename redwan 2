@@ -261,7 +261,7 @@ float mean(float arr[], int n){
     for(int i = 0;i < n; i++)
         sum += arr[i];
 
-    return sum/n;
+    return sum/n;   // 
 }
 double standardDeviation(float arr[], int n)
 {
@@ -280,6 +280,8 @@ double pow(float n, float m)
         }
         return 1 / total;
     }
+    else if (m == 0) // in case exp is 0 we return 1.
+        return 1;
     else // in case exponential is positive. DONE
     {
         for (int i = 0; i < m; i++)
@@ -287,9 +289,7 @@ double pow(float n, float m)
                 total *= n;
             }
         return total;
-    }
-    else if (m == 0) // in case exp is 0 we return 1.
-        return 1;
+    }  
 }
 double sin(float x)
 {
@@ -424,7 +424,6 @@ double calculateMedian(int *nums, int arry)
     double median = 0.0;
     cout << fixed << showpoint << setprecision(1);
 
-
     if (arry % 2 == 0)
     {
         median = (nums[arry/ 2 - 1] + nums[(arry / 2)]) / 2.0;
@@ -434,12 +433,12 @@ double calculateMedian(int *nums, int arry)
 
     return median;
 }
-long nCr(long n , long r)
+long nCr(long n , long r) 
 {
    long nume = 1, i;
    for(i = n; i>r; i--)
       nume *= i;
-   return long(nume/fact(n-r));//generate result of nCr
+   return long(nume/fact(n-r));//generate result of nCr for pascals triangle
 }
 void genPascalsTriangle(long n)
 {
@@ -465,9 +464,10 @@ void rectangular_to_polar (float x, float y)
 {
     double r, theta;
 
-    r = sqrt(pow(x, 2) + pow (y, 2));
-    theta = atan (y / x) * 180 / pi;
+    r = sqrt(pow(x, 2) + pow (y, 2)); // Function to get r.
+    theta = atan (y / x) * 180 / pi; // Function to get theta.
 
+    //Character output for the void function.
     cout << "Your r value is " << r << ".\nYour angle value is " << theta << " degrees.\n";
 }
 void conjugation(double n, double m)
@@ -535,7 +535,7 @@ void switch_calculator(int op) // every "while(!(cin >> input))" is an input val
                     cin.clear();
                     cin.ignore(123, '\n');
                 }
-            cout << fixed << setprecision(2);
+            cout << fixed << setprecision(2); // Setting it in two decimal places.
             cout << "Your sum of " << num1 << " and " << num2 << " is " << num1 + num2 << endl;
             break;
         case 2:    // SUBTRACTION
@@ -552,7 +552,7 @@ void switch_calculator(int op) // every "while(!(cin >> input))" is an input val
                     cin.clear();
                     cin.ignore(123, '\n');
                 }
-            cout << fixed << setprecision(2);
+            cout << fixed << setprecision(2); // Setting it in two decimal places.
             cout << "Your sum of " << num1 << " and " << num2 << " is " << num1 - num2 << endl;
             break;
         case 3: // MULTIPLICATION
@@ -569,7 +569,7 @@ void switch_calculator(int op) // every "while(!(cin >> input))" is an input val
                     cin.clear();
                     cin.ignore(123, '\n');
                 }
-            cout << fixed << setprecision(2);
+            cout << fixed << setprecision(2); // Setting it in two decimal places.
             cout << "Your multiplication of " << num1 << " by " << num2 << " is " << num1 * num2 << endl;
             break;
         case 4:  // DIVISION
@@ -586,14 +586,14 @@ void switch_calculator(int op) // every "while(!(cin >> input))" is an input val
                     cin.clear();
                     cin.ignore(123, '\n');
                 }
-            if (num2 == 0)
+            if (num2 == 0)// In case it is not divisible.
             {
                 cout << "Sorry you cannot divide by 0, try with another divisor.\n";
                 break;
             }
             else
             {
-               cout << fixed << setprecision(2);
+               cout << fixed << setprecision(2); // Setting it to two decimal places.
                cout << "The division of " << num1 << " by " << num2 << " is " << num1 / num2 << endl;
             }
             break;
@@ -1232,7 +1232,7 @@ void switch_calculator(int op) // every "while(!(cin >> input))" is an input val
                     cin.clear();
                     cin.ignore(123, '\n');
                 }
-            cout << fixed << "The APR you are paying as of now in is: " << apr(num1, num2, num3, i1) << "%." << endl;
+            cout << fixed << setprecision(2) << apr(num1, num2, num3, i1) << "is your APR." << endl;
             break;
 
         // switch default for non knowing operators
