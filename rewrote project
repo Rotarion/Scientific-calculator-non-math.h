@@ -63,20 +63,20 @@ int main()
 {
     // array of function pointers for main menu options
     void(*mainMenu[6])(void) = {arithmetic, exponentsAndLogarithms, trigonometricFunctions, combinatoricFunctions, sequencesAndSeries, complexNumberOperations};
-
-    size_t mainMenuOption;
+    				// address:    0			1						2							3					4					5 = 6
+    size_t mainMenuOption; // size t is an integer that cannot be negative.
 
     // main menu
     cout<<"Welcome to the calculator! Here are your options:\n";
 
         cout<<"\nHere are your options:\n";
         cout<< "0 - Arithmetic\n";
-        cout<<"1 - Exponents and Logarithms\n";
-        cout<<"2 - Trigonometric Functions\n";
-        cout<<"3 - Matrix Operations\n";
+        cout<< "1 - Exponents and Logarithms\n";
+        cout<< "2 - Trigonometric Functions\n";
+        cout<< "3 - Matrix Operations\n";
         cout<< "4 - Combinatorics (Permutations/Combinations)\n";
-        cout<<"5 - Sequences and Series\n";
-        cout<<"6 - Complex Number Operations\n";
+        cout<< "5 - Sequences and Series\n";
+        cout<< "6 - Complex Number Operations\n";
         cout<< "Make your selection (7 to exit): \n";
 
     while ((cin>>mainMenuOption) || mainMenuOption >= 0 && mainMenuOption < 6)
@@ -85,12 +85,12 @@ int main()
 
         cout<<"\nHere are your options:";
         cout<< "0 - Arithmetic\n";
-        cout<<"1 - Exponents and Logarithms\n";
-        cout<<"2 - Trigonometric Functions\n";
-        cout<<"3 - Matrix Operations\n";
+        cout<< "1 - Exponents and Logarithms\n";
+        cout<< "2 - Trigonometric Functions\n";
+        cout<< "3 - Matrix Operations\n";
         cout<< "4 - Combinatorics (Permutations/Combinations)\n";
-        cout<<"5 - Sequences and Series\n";
-        cout<<"6 - Complex Number Operations\n";
+        cout<< "5 - Sequences and Series\n";
+        cout<< "6 - Complex Number Operations\n";
         cout<< "Make your selection (7 to exit): \n";
         cin>>mainMenuOption;
     }
@@ -114,15 +114,18 @@ int GetOut(void)
 
 void arithmetic(void) // menu for arithmetic functions and absolute value
 {
+	void(*arithmenu[4])(void) = {Sum, Diff, Mult, Div};
 
+	size_t
 }
+
 void exponentsAndLogarithms(void) // menu for exponents and logarithms
 {
 
 }
 void trigonometricFunctions(void) // menu for trigonometric functions
 {
-	void(*trigMenu[9])(void) = {sin, cos, tan, Secant, Cosecant, Cotangent, Inverse sine, Inverse cosine, Inverse tangent};
+	void(*trigMenu[9])(void) = {Sine, Cosine, tangent, Secant, Cosecant, Cotangent, Inverse sine, Inverse cosine, Inverse tangent};
 
 	size_t trigMenuOption;
 
@@ -135,8 +138,8 @@ void trigonometricFunctions(void) // menu for trigonometric functions
 		 << "5. - Cotangent\n";
 		 << "6. - Inverse Sine\n";
 		 << "7. - Inverse Cosine\n";
-		 << "9. - Inverse Tangent\n";
-	while((cin >> trigMenuOption) || trigMenuOption >= 0 && trigMenuOption <= 9)
+		 << "8. - Inverse Tangent\n";
+	while((cin >> trigMenuOption) || trigMenuOption >= 0 && trigMenuOption <= 8)
 	{
 		(*mainMenu[mainMenuOption])();
 
@@ -149,12 +152,24 @@ void trigonometricFunctions(void) // menu for trigonometric functions
 		 << "5. - Cotangent\n";
 		 << "6. - Inverse Sine\n";
 		 << "7. - Inverse Cosine\n";
-		 << "9. - Inverse Tangent\n";
+		 << "8. - Inverse Tangent\n";
 	}
-	if (trigMenuOption > 9)
+	if (trigMenuOption > 8 || trigMenuOption < 0)
 	{
 		GetOut();
 	}
+}
+void Sine(void)	// void to get user input and calculate Sine
+{
+	float number
+	cout << "Please enter your number for the sine.\n";
+	while(!(cin >> number))
+	{
+		cout << "Error. Please enter a number.\n";
+		cin.clear();
+		cin.ignore(123, '/n');
+	}
+	cout << "Your sine in degrees is: " << sin(number * radianToDegree) << endl;
 }
 void combinatoricFunctions(void) // menu for factorial, nPr, nCr
 {
