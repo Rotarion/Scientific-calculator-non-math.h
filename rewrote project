@@ -1,0 +1,552 @@
+#include <iostream>
+using namespace std;
+
+
+
+// define constants
+#define PI 3.14159265368 // constant for pi
+#define DEGREETORADIAN 57.2957795 // constant for degree-to-radian conversions
+#define radianToDegree 0.0174532 // constant for radian-to-degree conversions
+#define e 2.718281828 // constant for number e
+
+// prototypes for menus
+int GetOut(void);
+//void terminate(void);
+void arithmetic(void); // menu for arithmetic functions and absolute value
+void exponentsAndLogarithms(void); // menu for exponents and logarithms
+void trigonometricFunctions(void); // menu for trigonometric functions
+void combinatoricFunctions(void); // menu for factorial, nPr, nCr
+void sequencesAndSeries(void); // menu for sequences and series
+void complexNumberOperations(void); // menu for complex number options
+
+// prototypes for functions required by certain other functions
+int comb(int n, int r);
+int per(int n, int r);
+int calculateMode(int *nums, int arry);
+float a_sequence(float a, float d, int n);
+float a_sum(float a, float d, float n);
+float g_sequence(float a, float r, int n);
+float g_sum(float a, float r, int n);
+float simple_interest(float principal, float rate, float time);
+float compound_interest(float principal, float rate, float time, int n);
+float apr(float fees, float interest, float principal, int n);
+float variance(float a[], int n);
+float sqrt(float m);
+float mean(float arr[], int n);
+double standardDeviation(float arr[], int n);
+double pow(float n, float m);
+double sin(float x);
+double cos(float x);
+double tan(float num);
+double sinh(double n);
+double cosh(double n);
+double tanh(double n);
+double asin(double num, double precision);
+double acos(double num, double precision );
+double atan(double x);
+double ln(double n);
+double LOG10(double n);
+double radian_to_degree(float n);
+double calculateMedian(int *nums, int arry);
+long nCr(long n, long r);
+void genPascalsTriangle(long n);
+void polar_to_rectangular(float r , float theta);
+void rectangular_to_polar (float x, float y);
+void conjugation(double n, double m);
+void bubbleSort(int *, int);
+void fibonacci (int n);
+
+// prototype of function to terminate calculator
+
+
+int main()
+{
+    // array of function pointers for main menu options
+    void(*mainMenu[6])(void) = {arithmetic, exponentsAndLogarithms, trigonometricFunctions, combinatoricFunctions, sequencesAndSeries, complexNumberOperations};
+
+    size_t mainMenuOption;
+
+    // main menu
+    cout<<"Welcome to the calculator! Here are your options:\n";
+
+        cout<<"\nHere are your options:\n";
+        cout<< "0 - Arithmetic\n";
+        cout<<"1 - Exponents and Logarithms\n";
+        cout<<"2 - Trigonometric Functions\n";
+        cout<<"3 - Matrix Operations\n";
+        cout<< "4 - Combinatorics (Permutations/Combinations)\n";
+        cout<<"5 - Sequences and Series\n";
+        cout<<"6 - Complex Number Operations\n";
+        cout<< "Make your selection (7 to exit): \n";
+
+    while ((cin>>mainMenuOption) || mainMenuOption >= 0 && mainMenuOption < 6)
+    {
+        (*mainMenu[mainMenuOption])();
+
+        cout<<"\nHere are your options:";
+        cout<< "0 - Arithmetic\n";
+        cout<<"1 - Exponents and Logarithms\n";
+        cout<<"2 - Trigonometric Functions\n";
+        cout<<"3 - Matrix Operations\n";
+        cout<< "4 - Combinatorics (Permutations/Combinations)\n";
+        cout<<"5 - Sequences and Series\n";
+        cout<<"6 - Complex Number Operations\n";
+        cout<< "Make your selection (7 to exit): \n";
+        cin>>mainMenuOption;
+    }
+
+    // terminate calculator if user inputs 7
+    if (mainMenuOption >= 6 || mainMenuOption < 0)
+
+    {
+        GetOut();
+    }
+}
+
+// function to terminate calculator
+int GetOut(void)
+{
+    cout << "\nExited the calculator. Have a nice day." << endl;
+
+    return 0;
+
+}
+
+void arithmetic(void) // menu for arithmetic functions and absolute value
+{
+
+}
+void exponentsAndLogarithms(void) // menu for exponents and logarithms
+{
+
+}
+void trigonometricFunctions(void) // menu for trigonometric functions
+{
+	void(*trigMenu[9])(void) = {sin, cos, tan, Secant, Cosecant, Cotangent, Inverse sine, Inverse cosine, Inverse tangent};
+
+	size_t trigMenuOption;
+
+	cout << "\nHere are your options:\n"
+		 << "0. - Sine\n";
+		 << "1. - Cosine\n";
+		 << "2. - Tangent\n";
+		 << "3. - Secant\n";
+		 << "4. - Cosecant\n";
+		 << "5. - Cotangent\n";
+		 << "6. - Inverse Sine\n";
+		 << "7. - Inverse Cosine\n";
+		 << "9. - Inverse Tangent\n";
+	while((cin >> trigMenuOption) || trigMenuOption >= 0 && trigMenuOption <= 9)
+	{
+		(*mainMenu[mainMenuOption])();
+
+		cout << "\nHere are your options:\n"
+		 << "0. - Sine\n";
+		 << "1. - Cosine\n";
+		 << "2. - Tangent\n";
+		 << "3. - Secant\n";
+		 << "4. - Cosecant\n";
+		 << "5. - Cotangent\n";
+		 << "6. - Inverse Sine\n";
+		 << "7. - Inverse Cosine\n";
+		 << "9. - Inverse Tangent\n";
+	}
+	if (trigMenuOption > 9)
+	{
+		GetOut();
+	}
+}
+void combinatoricFunctions(void) // menu for factorial, nPr, nCr
+{
+
+}
+void sequencesAndSeries(void) // menu for sequences and series
+{
+
+}
+void complexNumberOperations(void) // menu for complex number options
+{
+
+}
+double fact(int n)         //formula for fact
+{
+    if (n == 0 || n == 1) // return specific value in case of n =0,1
+    {
+        return 1;
+    }
+    else                  // otherwise we use recursion to get the factorial
+    {
+        return n * fact(n-1);
+    }
+}
+int comb(int n, int r)  //formula for the combination
+{
+   return fact(n) / (fact(r) * fact(n-r)) ; // return mathematical formula for combination
+}
+int per(int n, int r)   //formula for the permutation
+{
+    return fact(n) / fact(n-r); // return mathematical formula for permutation
+}
+int calculateMode(int *nums, int arry)   // mode function
+{
+    int mode = 0;
+    int val = 0;
+    int index;
+
+    for (index = 0; index < arry - 1; index++)  // note the - 1 here
+    {
+        if (nums[index] == nums[index + 1])
+        {
+            mode++;
+            val = *(nums + index);
+        }
+    }
+    if (val > 0)
+        return val;
+    else
+        return 0;
+}
+float a_sequence(float a, float d, int n)   // Arithmetic sequence formula
+{
+    float nthterm;
+    for(int i=0; i <= n; i++) // for loop to get the nthterm so we get the sequence
+    {
+        nthterm = a + (n-1) * d;
+    }
+    return nthterm;
+}
+float a_sum(float a, float d, float n)        // Arithmetic summation formula
+{
+    float first = n/2,              // first multiplier
+          distance = (n-1) * d,     // distance
+          twicea = 2*a,             // 2a for sum
+          sum;                      // store for sum
+
+    sum = first * (twicea + distance); // whole formula stored in sum
+
+    return sum; //return sum
+}
+float g_sequence(float a, float r, int n)   // Geometric sequence formula
+{
+    float nthterm;              // We gold the nth term of the summation.
+    for (int i=0; i <= n; i++)  // We start at 0 an go after n. We can write it without the <= and having only < but we would have to leave n without -1 which is not preferred.
+    {
+        nthterm = a * (pow(r,(n-1)));
+    }
+    return nthterm;
+}
+float g_sum(float a, float r, int n)        // Geometric summation formula
+{
+    float sum;  // Create the stored result value.
+    for(int i=0; i <= n; i++)
+    {
+        sum = (a * (pow(r,n)-1))/(r-1);
+    }
+    return sum;
+}
+float simple_interest(float principal, float rate, float time)            // Simple interest formula rate is in % so we use 0.06 for 6%
+{
+    float result = 0;   // Create the stored result value.
+
+    result = principal * (1 + rate * (time/12));
+
+    return result;
+}
+float compound_interest(float principal, float rate, float time, int n)   // r is in % so 6% would be 0.06, n is 1 for yearly and t is the amount of time so 3 for 3 years.
+{
+    float result; // Create the stored result value.
+
+    result = principal * (pow((1 + rate / n), (n*time/12)));
+
+    return result;
+}
+float apr(float fees, float interest, float principal, int n)             // n number of days in loan term, the others are self explanatory, yet interest or fees can be 0.
+{
+    float total; // Create the stored result value.
+
+    total = (((( fees + interest*principal) / principal) / n) * 365) / 100;       // Get the % of APR you are paying.
+
+    return total;
+}
+float variance(float a[], int n)
+{
+    // Compute mean (average of elements)
+    int sum = 0;
+    for (int i = 0; i < n; i++)
+        sum += a[i];
+    double mean = (double)sum /
+                  (double)n;
+
+    // Compute sum squared
+    // differences with mean.
+    double sqDiff = 0;
+    for (int i = 0; i < n; i++)
+        sqDiff += (a[i] - mean) *
+                  (a[i] - mean);
+    return sqDiff / n;
+}
+float sqrt(float m) //Formula for square rooting a number.
+{
+   float i=0;
+   float x1,x2;
+   if(m < 0) // return in case - number so we do not have imaginary ones
+   {
+       cout << "NaN\n";
+       cout << "We cannot compute imaginary numbers sorry. Try it again with a positive number.\n";
+   }
+   else if (m == 0)
+   {
+    return 0;
+   }
+   else
+   while( (i*i) < m )
+   {
+        i+=0.1;
+        x1=i;
+    }
+   for(int j=0;j<10;j++)
+   {
+      x2=m;
+      x2/=x1;
+      x2+=x1;
+      x2/=2;
+      x1=x2;
+   }
+   return x2;
+}
+float mean(float arr[], int n){
+    float sum = 0;
+    for(int i = 0;i < n; i++)
+        sum += arr[i];
+
+    return sum/n;   // 
+}
+double standardDeviation(float arr[], int n)
+{
+    return sqrt(variance(arr, n));
+}
+double pow(float n, float m)
+{
+    float total = 1;
+    if (m < 0) // in case exponential is negative
+    {
+        float positive;
+        positive = m * -1; //We change signs of the number to positive.
+        for (int i = 0; i < positive; i++)
+        {
+            total *= n;
+        }
+        return 1 / total;
+    }
+    else if (m == 0) // in case exp is 0 we return 1.
+        return 1;
+    else // in case exponential is positive. DONE
+    {
+        for (int i = 0; i < m; i++)
+            {
+                total *= n;
+            }
+        return total;
+    }  
+}
+double sin(float x)
+{
+    double result = 1;
+    double mxx = -x*x;                                 // Multiplying the variable
+    double addens = 1;
+    double temp = 2;                                   // Init of temp
+    for(int n = 2; n <= 200; n++)                      // For loop to do Sine, n can be increased for accuracy 
+    {
+        addens *= mxx/temp++/temp++;
+        result += addens;
+    }
+    return x*result;
+}
+double cos(float x)
+{
+    double result = 1;
+    double mxx = -x*x;                                 // Multiplying the variable
+    double addens = 1;
+    double temp = 1;                                   // Init of temp
+    for(int n = 2; n <= 200; n++)                      // For loop to do Cosine, n can be increased for accuracy 
+    {
+        //cout << "This is the iteneration number: " << n << endl;
+        addens *= mxx/temp++/temp++;
+        //cout << "This is mxx: " << mxx << endl;
+        //cout << "This is temp: " << temp << endl;
+        //cout << "This is addens: " << addens << endl;
+        result += addens;
+        //cout << "This is the result: " << result << endl;
+    }
+    return result;
+}
+double tan(float num)
+{
+    float a = sin(num);
+    float b = cos(num);
+    return a/b; // We use our previous values to get tangent.
+}
+double sinh(double n)
+{
+    return  (pow(e,n)-pow(e,-n))/2;                     // Math functions for hypberolic trig.
+}
+double cosh(double n)
+{
+    return  (pow(e,n)-pow(e,-n))/2;                     // Math functions for hypberolic trig.
+}
+double tanh(double n)
+{
+    return  (pow(e,n)-pow(e,-n))/(pow(e,n)+pow(e,-n));  // Math functions for hypberolic trig.
+}
+double asin(double num, double precision = 19)
+{ // Do not use other precision as it is skews.
+    double value = 0;
+    if (num > 1 || num < -1)
+    {
+       cout << "NaN" << endl;
+    }
+    else{
+    for(int n = 0; n < precision; n++) // For loop to calculate the sum of invsine
+    { 
+        value += 1.4298004337*(1/pow(2,2*n)*(pow(num,2*n+1)/(2*n+1)));
+    }
+    return value;
+    }
+}
+double acos(double num, double precision = 19)
+{
+    return (3.1415/2) - asin(num);
+}
+double atan(double x)
+{ // Any values other than 19 in precision and we skew far from the values.
+    double value = 0;
+    for(int n = 0; n < 29; n++) // For loop to calculate the sum of invtan.
+    { 
+        value += pow(-1.0, n) * pow(x, 2*n+1) / (2*n + 1);
+    }
+    return value;
+}
+double ln(double n)
+{
+
+    double num, mul, cal, sum = 0;
+    num = (n - 1) / (n + 1);
+    // determinating value of the loop
+    // can be increased to improve the precision
+    for (int i = 1; i <= 1000; i++)
+    {
+        mul = (2 * i) - 1;
+        cal = pow(num, mul);
+        cal = cal / mul;
+        sum = sum + cal;
+    }
+    sum = 2 * sum;
+    return sum;
+}
+double LOG10(double n)
+{
+    return (ln(n) / 2.303);
+}
+double radian_to_degree(float n)
+{
+    double angledivide;
+
+    angledivide = n * (pi / 180);
+
+    return angledivide;
+}
+double calculateMedian(int *nums, int arry)
+{
+    double median = 0.0;
+    cout << fixed << showpoint << setprecision(1);
+
+    if (arry % 2 == 0)
+    {
+        median = (nums[arry/ 2 - 1] + nums[(arry / 2)]) / 2.0;
+    }
+    else
+        median = nums[arry / 2];
+
+    return median;
+}
+long nCr(long n , long r) 
+{
+   long nume = 1, i;
+   for(i = n; i>r; i--)
+      nume *= i;
+   return long(nume/fact(n-r));//generate result of nCr for pascals triangle
+}
+void genPascalsTriangle(long n)
+{
+   for(int i = 0; i<n; i++)
+    {
+      for(int j = 0; j<(n-i-1); j++)
+         cout <<setw(3)<< " ";//printing space to show triangular form
+      for(int j = 0; j<(i+1); j++)
+         cout <<setw(3)<< nCr(i, j) <<setw(3)<< " ";
+      cout << endl;
+    }
+}
+void polar_to_rectangular(float r , float theta)
+{
+    double x, y;
+
+    x = r * cos(radian_to_degree(theta));
+    y = r * sin(radian_to_degree(theta));
+
+    cout << "Your x value is " << x << ".\nYour y value is " << y << ".\n" << endl;
+}
+void rectangular_to_polar (float x, float y)
+{
+    double r, theta;
+
+    r = sqrt(pow(x, 2) + pow (y, 2)); // Function to get r.
+    theta = atan (y / x) * 180 / pi; // Function to get theta.
+
+    //Character output for the void function.
+    cout << "Your r value is " << r << ".\nYour angle value is " << theta << " degrees.\n";
+}
+void conjugation(double n, double m)
+{
+    cout << "The conjugate of ("<< n <<","<< m << ") is (" << n << "," << -1*m << ")"<< endl;
+}
+void bubbleSort(int *nums, int arry)  //Bubble sort
+{
+    int temp;
+    for (int i = 0; i < arry; i++)
+    {
+        for (int j = i + 1; j < arry; j++)
+        {
+            if (nums[i] > nums[j])
+            {
+                temp = nums[i];
+                nums[i] = nums[j];
+                nums[j] = temp;
+            }
+        }
+    }
+}
+void fibonacci (int n) // Fibonacci formula
+{
+   int t1 = 0, t2 = 1, nextTerm = 0;
+
+    for (int i = 1; i <= n; ++i)
+    {
+        // Prints the first two terms.
+        if(i == 1)
+        {
+            cout << t1 << " \n";
+            continue;
+        }
+        if(i == 2)
+        {
+            cout << t2 << " \n";
+            continue;
+        }
+        nextTerm = t1 + t2;
+        t1 = t2;
+        t2 = nextTerm;
+
+        cout << nextTerm << " \n";
+    }
+}
