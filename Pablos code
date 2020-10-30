@@ -1,308 +1,226 @@
 #include <iostream>
-#include <bits/stdc++.h>    //
 #include <iomanip>
-#include <complex>          //
-#include <valarray>
 using namespace std;
 
+// Functions being called prior to program.
 double e = 2.718281828;
 double pi = 3.1415926535;
-double calculatorfunction (double a, double b, string op);
-int fact(int n);
+double fact(int n);
 int comb(int n, int r);
 int per(int n, int r);
+int calculateMode(int *nums, int arry);
+float a_sequence(float a, float d, int n);
+float a_sum(float a, float d, float n);
+float g_sequence(float a, float r, int n);
+float g_sum(float a, float r, int n);
+float simple_interest(float principal, float rate, float time);
+float compound_interest(float principal, float rate, float time, int n);
+float apr(float fees, float interest, float principal, int n);
+float variance(float a[], int n);
+float sqrt(float m);
+float mean(float arr[], int n);
+double standardDeviation(float arr[], int n);
+double pow(float n, float m);
+double sin(float x);
+double cos(float x);
+double tan(float num);
 double sinh(double n);
 double cosh(double n);
 double tanh(double n);
-int fibonnaci (double n);
-int pasca(double rows);
-float a_sequence(float a, float d, int n);
-float a_sum(float a, float d, int n);
-float g_sequence(float a, float r, int n);
-float g_sum(float a, float r, int n);
-float s_interest(float principal, float rate, float time);
-float compound_interest(float principal, float rate, float time, int n);
-float apr(float fees, float interest, float principal, int n);
-float mean(float sum, float numberTerms);
-float median(float n);
-int variance(int a[], int n);
-double standardDeviation(int arr[], int n);
-double radian_to_degree(float n);
-double polar_to_rectangular(float r , float theta);
-double rectangular_to_polar (float x, float y);
-double natural_Log(double n);
-double Log(double n);
-double exponentialE(double n);
-double exponential2(double n);
-double exponential (double a, double n);
+double asin(double num, double precision);
+double acos(double num, double precision );
+double atan(double x);
 double Gsin (float n);
 double Gcos (float n);
 double Gtan (float n);
 double Gcsc (float n);
 double Gsec (float n);
 double Gcotan (float n);
-double InvSine (float n);
-double InvCos (float n);
-double InvTan (float n);
+double ln(double n);
+double LOG10(double n);
+double radian_to_degree(float n);
+double calculateMedian(int *nums, int arry);
+long nCr(long n, long r);
+void genPascalsTriangle(long n);
+void polar_to_rectangular(float r , float theta);
+void rectangular_to_polar (float x, float y);
+void conjugation(double n, double m);
+void bubbleSort(int *, int);
+void fibonacci (int n);
+void switch_calculator(int op);
+
 
 
 int main()
 {
-    cout << Gsin(45) << endl;       // grades
-    cout << Gcos(45) << endl;
-    cout << Gtan(45) << endl;
+     int op;                     // We hold sentinel for operator and quit calculator.
 
-    cout << sin(45) << endl;        // radians
-    cout << cos(45) << endl;
+    cout << "***************************************************************\n"
+         << "*       Please choose from the list of operators              *\n"
+         << "*        You have to choose the number to work                *\n"
+         << "*  1.  +                             21. Conjugation          *\n"
+         << "*  2.  -                             22. Polar to rectangular *\n"
+         << "*  3.  *                             23. Rectangular to polar *\n"
+         << "*  4.  /                             24. Combination          *\n"
+         << "*  5.  Sine                          25. Permutation          *\n"
+         << "*  6.  Cosine                        26. Factorial            *\n"
+         << "*  7.  Tangent                       27. Fibonacci            *\n"
+         << "*  8.  Secant                        28. Pascal's Triangle    *\n"
+         << "*  9.  Cosecant                      29. Arithmetic Sequence  *\n"
+         << "*  10. Cotangent                     30. Arithmetic Sum       *\n"
+         << "*  11. Inv Sine                      31. Geometric Sequence   *\n"
+         << "*  12. Inv Cosine                    32. Geometric Sum        *\n"
+         << "*  13. Inv Tangent                   33. Mean                 *\n"
+         << "*  14. Exponential of e to the x     34. Median               *\n"
+         << "*  15. Exponential of x to the n     35. Mode                 *\n"
+         << "*  16. Natural log                   36. Standard Deviation   *\n"
+         << "*  17. Log                           37. Variance             *\n"
+         << "*  18. Hyperbolic Sine               38. Simple Interest      *\n"
+         << "*  19. Hyperbolic Cosine             39. Compound Interest    *\n"
+         << "*  20. Hyperbolic Tangent            40. APR Financing        *\n"
+         << "*  0 or any other character to exit the program.              *\n"
+         << "***************************************************************\n";
+    cin >> op;
+
+    while (op != 0)
+    {
+        switch_calculator(op);
+        cout << "***************************************************************\n"
+         << "*       Please choose from the list of operators              *\n"
+         << "*        You have to choose the number to work                *\n"
+         << "*  1.  +                             21. Conjugation          *\n"
+         << "*  2.  -                             22. Polar to rectangular *\n"
+         << "*  3.  *                             23. Rectangular to polar *\n"
+         << "*  4.  /                             24. Combination          *\n"
+         << "*  5.  Sine                          25. Permutation          *\n"
+         << "*  6.  Cosine                        26. Factorial            *\n"
+         << "*  7.  Tangent                       27. Fibonacci            *\n"
+         << "*  8.  Secant                        28. Pascal's Triangle    *\n"
+         << "*  9.  Cosecant                      29. Arithmetic Sequence  *\n"
+         << "*  10. Cotangent                     30. Arithmetic Sum       *\n"
+         << "*  11. Inv Sine                      31. Geometric Sequence   *\n"
+         << "*  12. Inv Cosine                    32. Geometric Sum        *\n"
+         << "*  13. Inv Tangent                   33. Mean                 *\n"
+         << "*  14. Exponential of e to the x     34. Median               *\n"
+         << "*  15. Exponential of x to the n     35. Mode                 *\n"
+         << "*  16. Natural log                   36. Standard Deviation   *\n"
+         << "*  17. Log                           37. Variance             *\n"
+         << "*  18. Hyperbolic Sine               38. Simple Interest      *\n"
+         << "*  19. Hyperbolic Cosine             39. Compound Interest    *\n"
+         << "*  20. Hyperbolic Tangent            40. APR Financing        *\n"
+         << "*  0 or any other character to exit the program.              *\n"
+         << "***************************************************************\n";
+    cin >> op;
+    }
+
     return 0;
 }
 
-double calculatorfunction (double a, double b, string op)
-{
-    double result = 0.0;
+// We need input validation as if any other input it appears it bugs the loop.
 
-    if (op.compare("+"))
-    {
-        result = a + b;
-    }
-    else if (op.compare("-"))
-    {
-        result = a - b;
-    }
-    else if (op.compare("*"))
-    {
-        result = a * b;
-    }
-    else if (op.compare("/"))
-    {
-        result = a / b;
-    }
-    else if (op.compare("^"))
-    {
-        result = pow(a,b);
-    }
-    else if (op.compare("F"))
-    {
-        b = 0;
-        result = fact(a);
-    }
-    else if (op.compare("Comb"))
-    {
-        result = comb(a,b);
-    }
-    else if (op.compare("Perm"))
-    {
-        result = per(a,b);
-    }
-    else if (op.compare("Sinh"))
-    {
-        b = 0;
-        result = sinh(a);
-    }
-    else if (op.compare("Cosh"))
-    {
-        b = 0;
-        result = cosh(a);
-    }
-    else if (op.compare("Tanh"))
-    {
-        b = 0;
-        result = tanh(a);
-    }
-    else if (op.compare("Fibonnaci"))
-    {
-        b = 0;
-        result = fibonnaci(a);
-    }
-    else if (op.compare("Pascal"))
-    {
-        b = 0;
-        result = pasca(a);
-    }
-    else
-    {
-        cout << "Bad input please go back to inputs and select a proper input." << endl;
-        return 0;
-    }
-    return result;
-}
 
-int fact(int n)         //formula for factorial
+
+double fact(int n)         //formula for fact
 {
-    if (n == 0 || n == 1)
+    if (n == 0 || n == 1) // return specific value in case of n =0,1
     {
         return 1;
     }
-    else if (n < 0)
-    {
-        cout << "Sorry factorials can only be used on positive integers." << endl;
-    }
-    else
+    else                  // otherwise we use recursion to get the factorial
     {
         return n * fact(n-1);
     }
 }
-
 int comb(int n, int r)  //formula for the combination
 {
-   return fact(n) / (fact(r) * fact(n-r)) ;
+   return fact(n) / (fact(r) * fact(n-r)) ; // return mathematical formula for combination
 }
-
 int per(int n, int r)   //formula for the permutation
 {
-    return fact(n) / fact(n-r);
+    return fact(n) / fact(n-r); // return mathematical formula for permutation
 }
-
-double sinh(double n)
+int calculateMode(int *nums, int arry)   // mode function
 {
-    return  (pow(e,n)-pow(e,-n))/2;
-}
+    int mode = 0;
+    int val = 0;
+    int index;
 
-double cosh(double n)
-{
-    return  (pow(e,n)-pow(e,-n))/2;
-}
-
-double tanh(double n)
-{
-    return  (pow(e,n)-pow(e,-n))/(pow(e,n)+pow(e,-n));
-}
-
-int fibonnaci (double n) // Fibonnaci formula
-{
-   int t1 = 0, t2 = 1, nextTerm = 0;
-
-    for (int i = 1; i <= n; ++i)
+    for (index = 0; index < arry - 1; index++)  // note the - 1 here
     {
-        // Prints the first two terms.
-        if(i == 1)
+        if (nums[index] == nums[index + 1])
         {
-            cout << " " << t1;
-            continue;
-        }
-        if(i == 2)
-        {
-            cout << t2 << " ";
-            continue;
-        }
-        nextTerm = t1 + t2;
-        t1 = t2;
-        t2 = nextTerm;
-
-         cout << nextTerm << " ";
-    }
-}
-
-int pasca(double rows) // Pascal's triangle formula
-{
-    if (rows >=21)
-    {
-        cout << "Sorry memorry error the calculator can only run 20 rows." << endl;
-    }
-    else if (rows <= 1)
-    {
-        int coef = 1;
-
-        for(int i = 0; i < rows; i++)
-        {
-            for(int space = 1; space <= rows-i; space++) // Space for rows
-                cout <<"  ";
-
-            for(int j = 0; j <= i; j++) // For loop in order to get the coefficient.
-            {
-                if (j == 0 || i == 0)
-                    coef = 1;
-                else
-                    coef = coef*(i-j+1)/j;
-
-                cout << coef << "   ";
-            }
-            cout << endl;
+            mode++;
+            val = *(nums + index);
         }
     }
-    else{
-        cout << "Please enter a positive integer.";
-    }
+    if (val > 0)
+        return val;
+    else
+        return 0;
 }
-
 float a_sequence(float a, float d, int n)   // Arithmetic sequence formula
 {
     float nthterm;
-    for(int i=0; i <= n; i++)
+    for(int i=0; i <= n; i++) // for loop to get the nthterm so we get the sequence
     {
         nthterm = a + (n-1) * d;
     }
     return nthterm;
 }
-
-float a_sum(float a, float d, int n)        // Arithmetic summation formula
+float a_sum(float a, float d, float n)        // Arithmetic summation formula
 {
-    float sum;
-    for(int i=0; i < n; i++)
-    {
-        sum = (n/2)*(2 * a + (n+1) * d);
-    }
-    return sum;
-}
+    float first = n/2,              // first multiplier
+          distance = (n-1) * d,     // distance
+          twicea = 2*a,             // 2a for sum
+          sum;                      // store for sum
 
+    sum = first * (twicea + distance); // whole formula stored in sum
+
+    return sum; //return sum
+}
 float g_sequence(float a, float r, int n)   // Geometric sequence formula
 {
     float nthterm;              // We gold the nth term of the summation.
     for (int i=0; i <= n; i++)  // We start at 0 an go after n. We can write it without the <= and having only < but we would have to leave n without -1 which is not preferred.
     {
-        nthterm = a * pow(r,(n-1));
+        nthterm = a * (pow(r,(n-1)));
     }
     return nthterm;
 }
-
 float g_sum(float a, float r, int n)        // Geometric summation formula
 {
-    float sum;
+    float sum;  // Create the stored result value.
     for(int i=0; i <= n; i++)
     {
         sum = (a * (pow(r,n)-1))/(r-1);
     }
     return sum;
 }
-
 float simple_interest(float principal, float rate, float time)            // Simple interest formula rate is in % so we use 0.06 for 6%
 {
-    float result;
+    float result = 0;   // Create the stored result value.
 
-    result = principal * (1 + rate * time);
+    result = principal * (1 + rate * (time/12));
 
     return result;
 }
-
 float compound_interest(float principal, float rate, float time, int n)   // r is in % so 6% would be 0.06, n is 1 for yearly and t is the amount of time so 3 for 3 years.
 {
-    float result;
+    float result; // Create the stored result value.
 
-    result = principal * (pow((1 + rate / n), (n*time)));
+    result = principal * (pow((1 + rate / n), (n*time/12)));
 
     return result;
 }
-
 float apr(float fees, float interest, float principal, int n)             // n number of days in loan term, the others are self explanatory, yet interest or fees can be 0.
 {
-    float total;
+    float total; // Create the stored result value.
 
-    total = (((( fees + interest) / principal) / n) * 365) * 100;       // Get the % of APR you are paying.
+    total = (((( fees + interest*principal) / principal) / n) * 365) / 100;       // Get the % of APR you are paying.
 
     return total;
 }
-
-float mean(float sum, float numberTerms)
-{
-    return sum/numberTerms;
-}
-
-float median(float n)
-{
-    return (n+1)/2;
-}
-
-int variance(int a[], int n)
+float variance(float a[], int n)
 {
     // Compute mean (average of elements)
     int sum = 0;
@@ -319,12 +237,192 @@ int variance(int a[], int n)
                   (a[i] - mean);
     return sqDiff / n;
 }
+float sqrt(float m) //Formula for square rooting a number.
+{
+   float i=0;
+   float x1,x2;
+   if(m < 0) // return in case - number so we do not have imaginary ones
+   {
+       cout << "NaN\n";
+       cout << "We cannot compute imaginary numbers sorry. Try it again with a positive number.\n";
+   }
+   else if (m == 0)
+   {
+    return 0;
+   }
+   else
+   while( (i*i) < m )
+   {
+        i+=0.1;
+        x1=i;
+    }
+   for(int j=0;j<10;j++)
+   {
+      x2=m;
+      x2/=x1;
+      x2+=x1;
+      x2/=2;
+      x1=x2;
+   }
+   return x2;
+}
+float mean(float arr[], int n){
+    float sum = 0;
+    for(int i = 0;i < n; i++)
+        sum += arr[i];
 
-double standardDeviation(int arr[], int n)
+    return sum/n;   // 
+}
+double standardDeviation(float arr[], int n)
 {
     return sqrt(variance(arr, n));
 }
+double pow(float n, float m)
+{
+    float total = 1;
+    if (m < 0) // in case exponential is negative
+    {
+        float positive;
+        positive = m * -1; //We change signs of the number to positive.
+        for (int i = 0; i < positive; i++)
+        {
+            total *= n;
+        }
+        return 1 / total;
+    }
+    else if (m == 0) // in case exp is 0 we return 1.
+        return 1;
+    else // in case exponential is positive. DONE
+    {
+        for (int i = 0; i < m; i++)
+            {
+                total *= n;
+            }
+        return total;
+    }  
+}
+double sin(float x)
+{
+    double result = 1;
+    double mxx = -x*x;                                 // Multiplying the variable
+    double addens = 1;
+    double temp = 2;                                   // Init of temp
+    for(int n = 2; n <= 200; n++)                      // For loop to do Sine, n can be increased for accuracy 
+    {
+        addens *= mxx/temp++/temp++;
+        result += addens;
+    }
+    return x*result;
+}
+double cos(float x)
+{
+    double result = 1;
+    double mxx = -x*x;                                 // Multiplying the variable
+    double addens = 1;
+    double temp = 1;                                   // Init of temp
+    for(int n = 2; n <= 200; n++)                      // For loop to do Cosine, n can be increased for accuracy 
+    {
+        //cout << "This is the iteneration number: " << n << endl;
+        addens *= mxx/temp++/temp++;
+        //cout << "This is mxx: " << mxx << endl;
+        //cout << "This is temp: " << temp << endl;
+        //cout << "This is addens: " << addens << endl;
+        result += addens;
+        //cout << "This is the result: " << result << endl;
+    }
+    return result;
+}
+double tan(float num)
+{
+    float a = sin(num);
+    float b = cos(num);
+    return a/b; // We use our previous values to get tangent.
+}
+double sinh(double n)
+{
+    return  (pow(e,n)-pow(e,-n))/2;                     // Math functions for hypberolic trig.
+}
+double cosh(double n)
+{
+    return  (pow(e,n)-pow(e,-n))/2;                     // Math functions for hypberolic trig.
+}
+double tanh(double n)
+{
+    return  (pow(e,n)-pow(e,-n))/(pow(e,n)+pow(e,-n));  // Math functions for hypberolic trig.
+}
+double asin(double num, double precision = 19)
+{ // Do not use other precision as it is skews.
+    double value = 0;
+    if (num > 1 || num < -1)
+    {
+       cout << "NaN" << endl;
+    }
+    else{
+    for(int n = 0; n < precision; n++) // For loop to calculate the sum of invsine
+    { 
+        value += 1.4298004337*(1/pow(2,2*n)*(pow(num,2*n+1)/(2*n+1)));
+    }
+    return value;
+    }
+}
+double acos(double num, double precision = 19)
+{
+    return (3.1415/2) - asin(num);
+}
+double atan(double x)
+{ // Any values other than 19 in precision and we skew far from the values.
+    double value = 0;
+    for(int n = 0; n < 29; n++) // For loop to calculate the sum of invtan.
+    { 
+        value += pow(-1.0, n) * pow(x, 2*n+1) / (2*n + 1);
+    }
+    return value;
+}
+double Gsin (float n)
+{
+    return sin(radian_to_degree((n)));
+}
+double Gcos (float n)
+{
+    return cos(radian_to_degree((n)));
+}
+double Gtan (float n)
+{
+    return tan(radian_to_degree((n)));
+}
+double Gcsc (float n)
+{
+    return 1/sin(radian_to_degree((n)));
+}
+double Gsec (float n)
+{
+    return 1/cos(radian_to_degree((n)));
+}
+double Gcotan (float n)
+{
+    return 1/tan(radian_to_degree((n)));
+}
+double ln(double n)
+{
 
+    double num, mul, cal, sum = 0;
+    num = (n - 1) / (n + 1);
+    // determinating value of the loop
+    // can be increased to improve the precision
+    for (int i = 1; i <= 1000; i++)
+    {
+        mul = (2 * i) - 1;
+        cal = pow(num, mul);
+        cal = cal / mul;
+        sum = sum + cal;
+    }
+    sum = 2 * sum;
+    return sum;
+}
+double LOG10(double n)
+{
+    return (ln(n) / 2.303);
+}
 double radian_to_degree(float n)
 {
     double angledivide;
@@ -333,95 +431,914 @@ double radian_to_degree(float n)
 
     return angledivide;
 }
+double calculateMedian(int *nums, int arry)
+{
+    double median = 0.0;
+    cout << fixed << showpoint << setprecision(1);
 
-double polar_to_rectangular(float r , float theta)
+    if (arry % 2 == 0)
+    {
+        median = (nums[arry/ 2 - 1] + nums[(arry / 2)]) / 2.0;
+    }
+    else
+        median = nums[arry / 2];
+
+    return median;
+}
+long nCr(long n , long r) 
+{
+   long nume = 1, i;
+   for(i = n; i>r; i--)
+      nume *= i;
+   return long(nume/fact(n-r));//generate result of nCr for pascals triangle
+}
+void genPascalsTriangle(long n)
+{
+   for(int i = 0; i<n; i++)
+    {
+      for(int j = 0; j<(n-i-1); j++)
+         cout <<setw(3)<< " ";//printing space to show triangular form
+      for(int j = 0; j<(i+1); j++)
+         cout <<setw(3)<< nCr(i, j) <<setw(3)<< " ";
+      cout << endl;
+    }
+}
+void polar_to_rectangular(float r , float theta)
 {
     double x, y;
 
     x = r * cos(radian_to_degree(theta));
     y = r * sin(radian_to_degree(theta));
 
-    cout << "Your x value is " << x << " your y value is " << y << "." << endl;
-    return 0;
+    cout << "Your x value is " << x << ".\nYour y value is " << y << ".\n" << endl;
 }
-
-double rectangular_to_polar (float x, float y)
+void rectangular_to_polar (float x, float y)
 {
     double r, theta;
 
-    r = sqrt(pow(x, 2) + pow (y, 2));
-    theta = atan (y / x) * 180 / pi;
+    r = sqrt(pow(x, 2) + pow (y, 2)); // Function to get r.
+    theta = atan (y / x) * 180 / pi; // Function to get theta.
 
-    cout << "Your r value is " << r << " and your angle value is " << theta << " degrees.";
-    return 0;
+    //Character output for the void function.
+    cout << "Your r value is " << r << ".\nYour angle value is " << theta << " degrees.\n";
 }
-
-double natural_Log(double n)
+void conjugation(double n, double m)
 {
-    return log(n);
+    cout << "The conjugate of ("<< n <<","<< m << ") is (" << n << "," << -1*m << ")"<< endl;
 }
-
-double Log(double n)
+void bubbleSort(int *nums, int arry)  //Bubble sort
 {
-    return log10(n);
+    int temp;
+    for (int i = 0; i < arry; i++)
+    {
+        for (int j = i + 1; j < arry; j++)
+        {
+            if (nums[i] > nums[j])
+            {
+                temp = nums[i];
+                nums[i] = nums[j];
+                nums[j] = temp;
+            }
+        }
+    }
 }
-
-double exponentialE(double n)
+void fibonacci (int n) // Fibonacci formula
 {
-    return pow(e, n);
+   int t1 = 0, t2 = 1, nextTerm = 0;
+
+    for (int i = 1; i <= n; ++i)
+    {
+        // Prints the first two terms.
+        if(i == 1)
+        {
+            cout << t1 << " \n";
+            continue;
+        }
+        if(i == 2)
+        {
+            cout << t2 << " \n";
+            continue;
+        }
+        nextTerm = t1 + t2;
+        t1 = t2;
+        t2 = nextTerm;
+
+        cout << nextTerm << " \n";
+    }
 }
-
-double exponential2(double n)
+void switch_calculator(int op) // every "while(!(cin >> input))" is an input validation command.
 {
-    return pow(n, 2);
-}
+    int i1, i2, i3;
+    float num1, num2, num3;
+    double dnum1, dnum2, dnum3;
+    switch (op)
+    {
+        case 1:   // ADDITION
+            cout << "Please enter the first and second number to make the sum." << endl;
+            while(!(cin >> num1))
+                {
+                    cout << "Error. Please enter the first number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << "Please enter the second number of the sum: " << endl;
+            while(!(cin >> num2))
+                {
+                    cout << "Error. Please enter the second number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << fixed << setprecision(2); // Setting it in two decimal places.
+            cout << "Your sum of " << num1 << " and " << num2 << " is " << num1 + num2 << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
+            break;
+        case 2:    // SUBTRACTION
+            cout << "Please enter the first and second number to make the subtraction.\nThe second number will be subtracted from the first." << endl;
+            while(!(cin >> num1))
+                {
+                    cout << "Error. Please enter the first number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << "Please enter the second number of the subtraction: " << endl;
+            while(!(cin >> num2))
+                {
+                    cout << "Error. Please enter the second number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << fixed << setprecision(2); // Setting it in two decimal places.
+            cout << "Your sum of " << num1 << " and " << num2 << " is " << num1 - num2 << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
+            break;
+        case 3: // MULTIPLICATION
+            cout << "Please enter the first and second number to make the multiplication." << endl;
+            while(!(cin >> num1))
+                {
+                    cout << "Error. Please enter the first number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << "Please enter the second number of the multiplication: " << endl;
+            while(!(cin >> num2))
+                {
+                    cout << "Error. Please enter the second number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << fixed << setprecision(2); // Setting it in two decimal places.
+            cout << "Your multiplication of " << num1 << " by " << num2 << " is " << num1 * num2 << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
+            break;
+        case 4:  // DIVISION
+            cout << "Please enter the first and second number to make the division.\nThe first number will be divided by the second.\n";
+            while(!(cin >> num1))
+                {
+                    cout << "Error. Please enter the first number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << "Please enter the divisor: " << endl;
+            while(!(cin >> num2))
+                {
+                    cout << "Error. Please enter the second number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            if (num2 == 0)// In case it is not divisible.
+            {
+                cout << "Sorry you cannot divide by 0, try with another divisor.\n";
+                break;
+            }
+            else
+            {
+               cout << fixed << setprecision(2); // Setting it to two decimal places.
+               cout << "The division of " << num1 << " by " << num2 << " is " << num1 / num2 << endl;
+               cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
 
-double exponential (double a, double n)
-{
-    return pow(a, n);
-}
+            }
+            break;
+        case 5:  // SINE
+            cout << "Please enter the number corresponding to the Sine.\n";
+            while(!(cin >> num1))
+                {
+                    cout << "Error. Please enter the first number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            if (num1 == 0)
+            {
+                cout << "This is the Sine in degrees: 0" << endl;
+                cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
+            }
+            else
+            cout << "This is the Sine in degrees: " << Gsin(num1) << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
+            break;
+        case 6:   //COSINE
+            cout << "Please enter the number corresponding to the Cosine.\n";
+            while(!(cin >> num1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            if (num1 == 90) // we help the program to compute 0.
+            {
+                cout << "This is the Cosine in degrees: 0" << endl;
+                cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
+            }
+            else
+            cout << "This is the Cosine in degrees: " << Gcos(num1) << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
+            break;
+        case 7:   //TANGENT
+            cout << "Please enter the number corresponding to the Tangent.\n";
+            while(!(cin >> num1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            if (num1 == 90) // we help the program to say it is an error
+            {
+                cout << "This is not possible to compute. NaN" << endl;
+                cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
+            }
+            else if (num1 == 0) // we help the program to compute 0.
+            {
+                cout << "This is the tan in degrees: 0" << endl;
+                cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
+            }
+            else
+            cout << "This is the Tangent in degrees: " << Gtan(num1) << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
+            break;
+        case 8:   //SECANT
+            cout << "Please enter the number corresponding to the Secant.\n";
+            while(!(cin >> num1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            if (num1 == 0) // we help the program to say it is an error
+            {
+                cout << "This is not possible to compute" << endl;
+                cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
+            }
+            else
+            cout << "This is the Secant in degrees: " << 1/Gsin(num1) << endl;
+        cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
+            break;
+        case 9:   //COSECANT
+            cout << "Please enter the number corresponding to the Cosecant.\n";
+            while(!(cin >> num1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            if (num1 == 90) // we help the program to say it is an error
+            {
+                cout << "This is not possible to compute" << endl;
+                cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
+            }
+            else
+            cout << "This is the Cosecant in degrees: " << 1/Gcos(num1) << endl;
+            break;
+        case 10:  //COTANGENT
+            cout << "Please enter the number corresponding to the Cotangent.\n";
+            while(!(cin >> num1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            if (num1 == 90 || num1 == 0) // we help the program to say it is an error
+            {
+                cout << "This is not possible to compute" << endl;
+                cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
+            }
+            else
+            cout << "This is the Cotangent in degrees: " << 1/Gtan(num1) << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
+            break;
 
-double Gsin (float n)
-{
-    return sin(radian_to_degree((n)));
-}
+        case 11://INVERSE SINE
+            cout << "Please enter the number corresponding to the Inverse Sine.\n";
+            while(!(cin >> num1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << "This is the Inverse Sine in radians: " << asin(num1)  << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
+            break;
+        case 12://INVERSE COSINE
+            cout << "Please enter the number corresponding to the  Inverse Cosine.\n";
+            while(!(cin >> num1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << "This is the Inverse Cosine in radians: " << acos(num1) << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
+            break;
+        case 13://INVERSE TANGENT
+            cout << "Please enter the number corresponding to the Inverse Tangent.\n";
+            while(!(cin >> num1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << "This is the Inverse Tangent in radians: " << atan(num1) << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
+            break;
+        case 14:// EXPONENTIAL OF E TO THE X
+            cout << "Please enter the number so we can raise e to that number.\n";
+            while(!(cin >> num1))
+                {
+                    cout << "Error. Please enter the exponential to e: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << fixed << setprecision(2); // We set the decimals to 2.
+            cout << "You raise e to the " << num1 << " The result is: " << pow(e,num1) << "." << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
+            break;
+        case 15:// EXPONENTIAL OF X TO THE N
+            cout << "Please enter the number x and then enter the exponential.\n";
+            while(!(cin >> num1))
+                {
+                    cout << "Error. Please enter the first number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << "Please now enter the exponential: \n";
+            while(!(cin >> num2))
+                {
+                    cout << "Error. Please enter the second number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << fixed << setprecision(2); // We set the decimals to 2.
+            cout << "You decided to raise " << num1 << " to the exponential " << num2 << " the result is: " << pow(num1,num2) << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
+            break;
+        case 16:// NATURAL LOG
+            cout << "Please enter the number so we can compute the natural log of that number.\n";
+            while(!(cin >> dnum1))
+                {
+                    cout << "Error. Please enter a number for the natural log(ln): \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << fixed << setprecision(2);
+            cout << "The natural log of " << dnum1 << " is: " << ln(dnum1) << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
+            break;
+        case 17:// LOG
+            cout << "Please enter the number so we can compute the log of base 10 of that number.\n";
+            while(!(cin >> dnum1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << fixed << setprecision(2);
+            cout << "The log of " << dnum1 << " is: " << LOG10(dnum1) << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
+            break;
+        case 18:// HYPERBOLIC SINE
+            cout << "Please enter the value of the hyperbolic Sine.\n";
+            while(!(cin >> dnum1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << "The value of the hyperbolic Sine is "<< sinh(dnum1) << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
+            break;
+        case 19:// HYPERBOLIC COSINE
+            cout << "Please enter the value of the hyperbolic Cosine.\n";
+            while(!(cin >> dnum1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << "The value of the hyperbolic Cosine is "<< cosh(dnum1) << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
+            break;
+        case 20:// HYPERBOLIC TANGENT
+            cout << "Please enter the value of the hyperbolic Tangent.\n";
+            while(!(cin >> dnum1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << "The value of the hyperbolic Tangent is "<< tanh(dnum1) << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
+            break;
+        case 21: // CONJUGATION
+            cout << "Please enter x\n";
+            while(!(cin >> dnum1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << "Please enter y\n";
+            while(!(cin >> dnum2))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            conjugation(dnum1, dnum2);
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Redwan Ahmed.\n\n";
+            break;
+        case 22: // POLAR TO RECTANGULAR
+            cout << "Please enter the r\n";
+            while(!(cin >> num1))
+                {
+                    cout << "Error. Please enter the r in a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << "Please enter the theta\n";
+            while(!(cin >> num2))
+                {
+                    cout << "Error. Please enter theta in a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << "This is the conversion from polar to rectangular: \n";
+            polar_to_rectangular(num1 , num2);
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Redwan Ahmed.\n\n";
+            break;
+        case 23: // RECTUNGULAR TO POLAR
+            cout << "Please enter your x\n";
+            while(!(cin >> num1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << "Please enter your y\n";
+            while(!(cin >> num2))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << "This is your conversion from rectangular to polar: \n";
+            rectangular_to_polar (num1, num2);
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Redwan Ahmed.\n\n";
+            break;
+        case 24: // COMBINATION
+            cout << "Please enter your n\n";
+            while(!(cin >> num1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << "Please enter your r\n";
+            while(!(cin >> num2))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            if (num2 > num1)
+            {
+                cout << "Please remember r cannot be bigger than n.\n\n";
+                break;
+            }
+            else{
+            cout << comb(num1, num2) << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Redwan Ahmed and Roy Gao.\n\n";
+            }
+            break;
+        case 25:  // PERMUTATION
+            cout << "Please enter your n\n";
+             while(!(cin >> num1) || num1 < 0) // Loop to validate num1 input.
+                {
+                    cout << "Error. Please enter n as a positive number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << "Please enter your r\n";
+            while(!(cin >> num2) || num2 < 0) // Loop to validate num2 input.
+                {
+                    cout << "Error. Please enter r as a positive number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            if (num2 > num1) // Comparison of numbers to see if the input is invalid.
+            {
+                cout << "Please remember r cannot be bigger than n.\n\n";
+                break;
+            }
+            else
+            { // else we run the program for permutation.
+            cout << per(num1, num2) << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Redwan Ahmed.\n\n";
+            }
+            break;
+        case 26:  // // FACTORIAL
+            cout << "Please enter a number so we can calculate the factorial.\n";
+            while(!(cin >> num1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            if (num1 < 0)
+            {
+                cout << "Factorial can only be calculated with positive integers.\n";
+                cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Redwan Ahmed.\n\n";
+            }
+            else
+            {
+                cout << fixed << setprecision(2) << "The factorial of " << num1 << " is: " << fact(num1) << endl;
+                cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Redwan Ahmed.\n\n";
+            }
+            break;
+        case 27:  // FIBONACCI
+            cout << "Please enter the number of iterations for the fibonacci sequence\n";
+            while(!(cin >> i1) || i1 > 40 || i1 <= 0) // We have the limits of 1 to 40 to secure the memory of the computer.
+                {
+                    cout << "Error. Please enter a positive number between 1 and 40: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+                cout << "The fibonacci sequence is: \n";
+                fibonacci(i1);
+                cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Redwan Ahmed.\n\n";
+                cout << endl;
+            break;
+        case 28:  // PASCAL'S TRIANGLE
+            cout << "Please enter the number for Pascal's triangle between 1 and 13.\n";
+            while(!(cin >> i1) || i1 > 13 || i1 <= 0) // We limit 0 to 13 to maintain harmony.
+                {
+                    cout << "Error. Please enter a number between 1 and 13: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+                genPascalsTriangle(i1);
+                cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Redwan Ahmed.\n\n";
+            break;
+        case 29:   // ARITHMETIC SEQUENCE
+            cout << "Please enter the first term of the sequence.\n";
+            while(!(cin >> num1))
+                {
+                    cout << "Error. Please enter the first term of the sequence: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << "Please enter the distance of the sequence.\n";
+            while(!(cin >> num2))
+                {
+                    cout << "Error. Please enter the distance of the sequence: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << "Please enter the term position of the sequence.\n";
+            while(!(cin >> i1))
+                {
+                    cout << "Error. Please enter the position of the sequence: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << a_sequence(num1, num2, i1) << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Redwan Ahmed.\n\n";
+            break;
+        case 30:   // ARITHMETIC SUM
+            cout << "Please enter the first term of the sum.\n";
+            while(!(cin >> num1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << "Please enter the distance of the sum.\n";
+            while(!(cin >> num2))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << "Please enter the term position of the sum.\n";
+            while(!(cin >> i1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << a_sum(num1, num2, i1) << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Redwan Ahmed.\n\n";
+            break;
+        case 31:  //GEOMETRIC SEQUENCE
+            cout << "Please enter the first term of the sequence.\n";
+            while(!(cin >> num1))
+                {
+                    cout << "Error. Please enter the first term of the sequence: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << "Please enter the ratio of the sequence.\n";
+            while(!(cin >> num2))
+                {
+                    cout << "Error. Please enter the ratio of the sequence: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << "Please enter the term position of the sequence.\n";
+            while(!(cin >> i1))
+                {
+                    cout << "Error. Please enter the term position of the sequence: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << fixed;
+            cout << g_sequence(num1, num2, i1) << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Redwan Ahmed.\n\n";
+            break;
+        case 32:   // GEOMETRIC SUM
+            cout << "Please enter the first term of the sum.\n";
+            while(!(cin >> num1))
+                {
+                    cout << "Error. Please enter the first term of the sum: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << "Please enter the ratio of the sum.\n";
+            while(!(cin >> num2))
+                {
+                    cout << "Error. Please enter the ratio of the sum: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << "Please enter the term position of the sum.\n";
+            while(!(cin >> i1))
+                {
+                    cout << "Error. Please the term position of the sum: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << fixed << setprecision(3) << g_sum(num1, num2, i1) << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Redwan Ahmed.\n\n";
+            break;
+        case 33:  // MEAN
+            float arr[50];
+            cout << "Enter the size of array: \n";
+            while(!(cin >> i1) || i1 <=0)
+                {
+                    cout << "Error. Please enter the size it cannot be 0 or negative: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            //input in the array
+            cout << "Enter the elements of array: \n";
+            for(int i = 0; i < i1; i++)
+            {
+                cout << "Please enter #" << i + 1 << " of the array: \n";
+                while (!(cin >> arr[i]))
+                   {
+                       cout << "Error. Please enter the #" << i + 1 << " again. \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                   }
+            }
 
-double Gcos (float n)
-{
-    return cos(radian_to_degree((n)));
-}
+            cout << "\nMean = "<< mean(arr, i1) << endl;
+            cout << "This result is brought to you by the programmer Redwan Ahmed and tested by Pablo Cabrera.\n\n";
+            break;
+        case 34:  //MEDIAN
+            {
+                int *nums;
+                int arry;
+                char repeat = ' ';
 
-double Gtan (float n)
-{
-    return tan(radian_to_degree((n)));
-}
+                cout << "Enter size of the arry: " << endl;
+                while (!(cin >> arry) || arry <= 0)
+                {
+                    cout << "Error, Please enter a positive number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+                nums = new int[arry]; // nums[arry]
 
-double Gcsc (float n)
-{
-    return 1/sin(radian_to_degree((n)));
-}
+                for (int count = 0; count < arry; count++)
+                {
+                    cout << "Number #" << (count + 1) << ": ";
+                    while (!(cin >> nums[count]))
+                    {
+                        cout << "Error, Please re-enter the number: " << count << endl;
+                        cin.clear();
+                        cin.ignore(123, '\n');
+                    }
+                }
+                bubbleSort(nums, arry);
 
-double Gsec (float n)
-{
-    return 1/cos(radian_to_degree((n)));
-}
+                cout << fixed << showpoint << setprecision(1);
 
-double Gcotan (float n)
-{
-    return 1/tan(radian_to_degree((n)));
-}
+                cout << "\nThe median is: ";
+                cout << calculateMedian(nums, arry) << endl;
+                cout << "This result is brought to you by the programmer Redwan Ahmed and tested by Pablo Cabrera.\n\n";
+                delete[] nums;
+                nums = 0;
+            }
+            break;
+        case 35:  //MODE
+            {
+                {
+                int *nums;
+                int arry;
+                char repeat = ' ';
 
-double InvSine (float n)
-{
-    return asin(n)*180 /pi;
-}
+                cout << "Enter size of the arry: " << endl;
+                // We cannot have a negative size array so we validate input and put restrictions
+                while (!(cin >> arry) || arry <= 0) 
+                {
+                    cout << "Error, Please enter a positive number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+                nums = new int[arry]; // nums[arry]
 
-double InvCos (float n)
-{
-    return acos(n)*180 /pi;
-}
+                for (int count = 0; count < arry; count++)
+                {
+                    cout << "Number #" << (count + 1) << ": ";
+                    while (!(cin >> nums[count]))
+                    {
+                        cout << "Error, Please re-enter the number: " << count + 1 << endl;
+                        cin.clear();
+                        cin.ignore(123, '\n');
+                    }
+                }
+                bubbleSort(nums, arry);
 
-double InvTan (float n)
-{
-    return atan(n)*180 /pi;
+                cout << fixed << showpoint << setprecision(1);
+
+                cout << "\nThe mode is: ";
+                cout << calculateMode(nums, arry) << endl;
+                cout << "This result is brought to you by the programmer Redwan Ahmed and tested by Pablo Cabrera.\n\n";
+                delete[] nums;
+                nums = 0;
+                }
+            }
+            break;
+        case 36:  // STANDRAD DEVIATION
+            arr[50];
+            cout << "Enter the size of array: \n";
+            // We cannot have a negative size array so we validate input and put restrictions
+            while(!(cin >> i1) || i1 <=0)
+                {
+                    cout << "Error. Please enter the size it cannot be 0 or negative: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            //input in the array
+            cout << "Enter the elements of array: \n";
+            for(int i = 0; i < i1; i++)
+            {
+                cout << "Please enter #" << i + 1 << " of the array: \n";
+                while (!(cin >> arr[i]))
+                   {
+                       cout << "Error. Please enter the #" << i + 1 << " again. \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                   }
+            }
+            cout << "\nStandard Deviation = " << standardDeviation(arr, i1) << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by himself.\n\n";
+            break;
+        case 37:  // VARIANCE
+            arr[50];
+            cout << "Enter the size of array: \n";
+            while(!(cin >> i1) || i1 <=0)
+                {
+                    cout << "Error. Please enter the size it cannot be 0 or negative: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            //input in the array
+            cout << "Enter the elements of array: \n";
+            for(int i = 0; i < i1; i++)
+            {
+                cout << "Please enter #" << i + 1 << " of the array: \n";
+                while (!(cin >> arr[i]))
+                   {
+                       cout << "Error. Please enter the #" << i + 1 << " again. \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                   }
+            }
+            cout << "\nVariance = " << variance(arr, i1) << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by himself.\n\n";
+            break;
+        case 38:  // SIMPLE INTEREST
+            cout << "Please enter the principal.\n";
+            while(!(cin >> num1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << "Please enter your rate as 0.06 for 6%.\n";
+            while(!(cin >> num2))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << "Please enter the time period of the interest working.\nIf it is one year put 12 as 1 would be only one month.\n";
+            while(!(cin >> num3))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << "Your simple interest is $" << simple_interest(num1, num2, num3) - num1 << ". Your total ammount is: $" << simple_interest(num1, num2, num3) << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by himself.\n\n";
+            break;
+        case 39:  // COMPOUND INTEREST
+            cout << "Please enter the principal.\n";
+            while(!(cin >> num1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << "Please enter your rate as 0.06 for 6%.\n";
+            while(!(cin >> num2))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << "Please enter the time period of the interest working.\nRemember that 1 would be one month so you need 12 to make it a year.\n";
+            while(!(cin >> num3))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << "Enter the times the interest was applied.\n12 would be for monthly interest and daily would be 365 and so on.\n";
+            while(!(cin >> i1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << "Your compound interest made you $" << compound_interest(num1, num2, num3, i1) - num1 << ". Your total is: $"
+                 << compound_interest(num1, num2, num3, i1) << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by himself.\n\n";
+            break;
+        case 40: // NOT WORKING NEED FIXED!!!!!!!!!!!    // APR FINANCING
+            cout << "Please enter the fees you are paying.\n";
+            while(!(cin >> num1))
+                {
+                    cout << "Error. Please enter the fees again: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << "Please enter your principal.\n";
+            while(!(cin >> num2))
+                {
+                    cout << "Error. Please enter the principal again: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << "Please enter the interest you are paying as 0.06 for 6%.\n";
+            while(!(cin >> num3))
+                {
+                    cout << "Error. Please enter the interest you are paying as 0.06 for 6%: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << "Enter the time on which the interest is applied\n";
+            while(!(cin >> i1))
+                {
+                    cout << "Error. Please enter the time on which the interest is applied: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << fixed << setprecision(2) << apr(num1, num2, num3, i1) << "is your APR." << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by himself.\n\n";
+            break;
+
+        // switch default for non knowing operators
+        default: cout << "Please enter a proper operator otherwise the calculator will not know what to compute." << endl;
+        break;
+    }
 }
