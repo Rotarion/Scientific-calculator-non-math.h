@@ -1,3 +1,8 @@
+int i1, i2, i3;
+float num1, num2, num3;
+double dnum1, dnum2, dnum3;
+
+
 void arithmetic(void) // menu for arithmetic functions and absolute value
 {
 	void(*aritheticMenu[7])(void) = {Sum, Diff, Mult, Div, Conjugate, PolartoRect, RecttoPolar};
