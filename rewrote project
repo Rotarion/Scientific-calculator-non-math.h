@@ -13,7 +13,7 @@ using namespace std;
 // prototypes for menus
 int GetOut(void);
 //void terminate(void);
-void arithmetic(void); // menu for arithmetic functions and absolute value
+//void arithmetic(void); // menu for arithmetic functions and absolute value
 void exponentsAndLogarithms(void); // menu for exponents and logarithms
 void trigonometricFunctions(void); // menu for trigonometric functions
 void combinatoricFunctions(void); // menu for factorial, nPr, nCr, Series and Sequences
@@ -32,7 +32,7 @@ void InverseTangent(void);
 
 //void combsubmenu executables;
 void Combination(void);
-void Permuntation(void);
+void Permutation(void);
 void Factorial(void);
 void fibonacciVoid(void);
 void Pascal(void);
@@ -84,7 +84,7 @@ void fibonacci (int n);
 int main()
 {
     // array of function pointers for main menu options
-    void(*mainMenu[5])(void) = {arithmetic, exponentsAndLogarithms, trigonometricFunctions, combinatoricFunctions, statisticsAndFinancing};
+    void(*mainMenu[5])(void) = {exponentsAndLogarithms, trigonometricFunctions, combinatoricFunctions, statisticsAndFinancing};
 
     size_t mainMenuOption; // size t is an integer that cannot be negative.
 
@@ -309,7 +309,7 @@ void InverseTangent(void)
 }
 void combinatoricFunctions(void) // menu for factorial, nPr, nCr
 {
-    void(*combiMenu[9])(void) = {Combination, Permuntation, Factorial, fibonacciVoid, Pascal, ArithmeticSeq, ArithmeticSer, GeometricSeq, GeometricSer};
+    void(*combiMenu[9])(void) = {Combination, Permutation, Factorial, fibonacciVoid, Pascal, ArithmeticSeq, ArithmeticSer, GeometricSeq, GeometricSer};
 
     size_t combiMenuOption;
 
@@ -343,7 +343,7 @@ void combinatoricFunctions(void) // menu for factorial, nPr, nCr
         GetOut();
     }
 }
-void combination(void)
+void Combination(void)
 {
     float num1, num2; // we create floats to hold user input.
     cout << "Please enter your n\n";
