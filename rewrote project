@@ -19,7 +19,30 @@ void trigonometricFunctions(void); // menu for trigonometric functions
 void combinatoricFunctions(void); // menu for factorial, nPr, nCr, Series and Sequences
 void statisticsAndFinancing(void); // menu for complex number options
 
+//void trisubmenu executables;
+void Sine(void);
+void Cosine(void);
+void Tangent(void);
+void Secant(void);
+void Cosecant(void);
+void Cotangent(void);
+void InverseSine(void);
+void InverseCosine(void);
+void InverseTangent(void);
+
+//void combsubmenu executables;
+void Combination(void);
+void Permuntation(void);
+void Factorial(void);
+void fibonacciVoid(void);
+void Pascal(void);
+void ArithmeticSeq(void);
+void ArithmeticSer(void);
+void GeometricSeq(void);
+void GeometricSer(void);
+
 // prototypes for functions required by certain other functions
+double fact(int n);
 int comb(int n, int r);
 int per(int n, int r);
 int calculateMode(int *nums, int arry);
@@ -61,8 +84,8 @@ void fibonacci (int n);
 int main()
 {
     // array of function pointers for main menu options
-    void(*mainMenu[6])(void) = {arithmetic, exponentsAndLogarithms, trigonometricFunctions, combinatoricFunctions, sequencesAndSeries, complexNumberOperations};
-    				// address:    0			1						2							3					4					5 = 6
+    void(*mainMenu[5])(void) = {arithmetic, exponentsAndLogarithms, trigonometricFunctions, combinatoricFunctions, statisticsAndFinancing};
+
     size_t mainMenuOption; // size t is an integer that cannot be negative.
 
     // main menu
@@ -72,30 +95,25 @@ int main()
         cout<< "0 - Arithmetic\n";
         cout<< "1 - Exponents and Logarithms\n";
         cout<< "2 - Trigonometric Functions\n";
-        cout<< "3 - Matrix Operations\n";
-        cout<< "4 - Combinatorics (Permutations/Combinations)\n";
-        cout<< "5 - Sequences and Series\n";
-        cout<< "6 - Complex Number Operations\n";
-        cout<< "Make your selection (7 to exit): \n";
+        cout<< "3 - Combinations and Series\n";
+        cout<< "4 - Statistics and financing\n";
+        cout<< "Make your selection (5 to exit): \n";
 
-    while ((cin>>mainMenuOption) || mainMenuOption >= 0 && mainMenuOption < 6)
+    while ((cin>>mainMenuOption) || mainMenuOption >= 0 && mainMenuOption < 5)
     {
         (*mainMenu[mainMenuOption])();
 
-        cout<<"\nHere are your options:";
+        cout<<"\nHere are your options:\n";
         cout<< "0 - Arithmetic\n";
         cout<< "1 - Exponents and Logarithms\n";
         cout<< "2 - Trigonometric Functions\n";
-        cout<< "3 - Matrix Operations\n";
-        cout<< "4 - Combinatorics (Permutations/Combinations)\n";
-        cout<< "5 - Sequences and Series\n";
-        cout<< "6 - Complex Number Operations\n";
-        cout<< "Make your selection (7 to exit): \n";
+        cout<< "3 - Combinations and Series\n";
+        cout<< "4 - Statistics and financing\n";
+        cout<< "Make your selection (5 to exit): \n";
         cin>>mainMenuOption;
     }
-
     // terminate calculator if user inputs 7
-    if (mainMenuOption >= 6 || mainMenuOption < 0)
+    if (mainMenuOption >= 5 || mainMenuOption < 0)
 
     {
         GetOut();
@@ -109,15 +127,15 @@ int GetOut(void)
 
     return 0;
 }
-
+/*
 void arithmetic(void) // menu for arithmetic functions and absolute value
 {
-	void(*arithmenu[4])(void) = {Sum, Diff, Mult, Div};
+    void(*arithmenu[4])(void) = {Sum, Diff, Mult, Div};
 
-	size_t arithmeticoption;
+    size_t arithmeticoption;
 
-	(*arithmenu[4])();
-}
+    (*arithmenu[4])();
+}*/
 
 void exponentsAndLogarithms(void) // menu for exponents and logarithms
 {
@@ -125,44 +143,45 @@ void exponentsAndLogarithms(void) // menu for exponents and logarithms
 }
 void trigonometricFunctions(void) // menu for trigonometric functions
 {
-	void(*trigMenu[9])(void) = {Sine, Cosine, Tangent, Secant, Cosecant, Cotangent, InverseSine, InverseCosine, InverseTangent};
+    void(*trigMenu[9])(void) = {Sine, Cosine, Tangent, Secant, Cosecant, Cotangent, InverseSine, InverseCosine, InverseTangent};
 
-	size_t trigMenuOption;
+    size_t trigMenuOption;
 
-	cout << "\nHere are your options:\n"
-		 << "0. - Sine\n";
-		 << "1. - Cosine\n";
-		 << "2. - Tangent\n";
-		 << "3. - Secant\n";
-		 << "4. - Cosecant\n";
-		 << "5. - Cotangent\n";
-		 << "6. - Inverse Sine\n";
-		 << "7. - Inverse Cosine\n";
-		 << "8. - Inverse Tangent\n";
-	while((cin >> trigMenuOption) || trigMenuOption >= 0 && trigMenuOption <= 8)
-	{
-		(*mainMenu[mainMenuOption])();
+    cout << "\nHere are your options:\n"
+         << "0. - Sine\n"
+         << "1. - Cosine\n"
+         << "2. - Tangent\n"
+         << "3. - Secant\n"
+         << "4. - Cosecant\n"
+         << "5. - Cotangent\n"
+         << "6. - Inverse Sine\n"
+         << "7. - Inverse Cosine\n"
+         << "8. - Inverse Tangent\n";
+    while((cin >> trigMenuOption) || trigMenuOption >= 0 && trigMenuOption <= 8)
+    {
+        (*trigMenu[trigMenuOption])();
 
-		cout << "\nHere are your options:\n"
-		 << "0. - Sine\n";
-		 << "1. - Cosine\n";
-		 << "2. - Tangent\n";
-		 << "3. - Secant\n";
-		 << "4. - Cosecant\n";
-		 << "5. - Cotangent\n";
-		 << "6. - Inverse Sine\n";
-		 << "7. - Inverse Cosine\n";
-		 << "8. - Inverse Tangent\n";
-	}
-	if (trigMenuOption >=9 || trigMenuOption < 0)
-	{
-		GetOut();
-	}
+        cout << "\nHere are your options:\n"
+         << "0. - Sine\n"
+         << "1. - Cosine\n"
+         << "2. - Tangent\n"
+         << "3. - Secant\n"
+         << "4. - Cosecant\n"
+         << "5. - Cotangent\n"
+         << "6. - Inverse Sine\n"
+         << "7. - Inverse Cosine\n"
+         << "8. - Inverse Tangent\n";
+         cin >> trigMenuOption;
+    }
+    if (trigMenuOption >=9 || trigMenuOption < 0)
+    {
+        GetOut();
+    }
 }
-void Sine(void)	// void to get user input and calculate Sine
+void Sine(void) // void to get user input and calculate Sine
 {
-	float num1;
-	cout << "Please enter the number corresponding to the Sine.\n";
+    float num1;
+    cout << "Please enter the number corresponding to the Sine.\n";
             while(!(cin >> num1))
                 {
                     cout << "Error. Please enter the first number: \n";
@@ -178,29 +197,29 @@ void Sine(void)	// void to get user input and calculate Sine
             cout << "This is the Sine in degrees: " << sin(num1*radianToDegree) << endl;
             cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
 }
-void Cosine(void)	// void to get user input and calculate Sine
+void Cosine(void)   // void to get user input and calculate Sine
 {
-	float num1;
-	 cout << "Please enter the number corresponding to the Cosine.\n";
-	    while(!(cin >> num1))
-	        {
-	            cout << "Error. Please enter a number: \n";
-	            cin.clear();
-	            cin.ignore(123, '\n');
-	        }
-	    if (num1 == 90) // we help the program to compute 0.
-	    {
-	        cout << "This is the Cosine in degrees: 0" << endl;
-	        cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
-	    }
-	    else
-	    cout << "This is the Cosine in degrees: " << cos(num1*radianToDegree) << endl;
-	    cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
+    float num1;
+     cout << "Please enter the number corresponding to the Cosine.\n";
+        while(!(cin >> num1))
+            {
+                cout << "Error. Please enter a number: \n";
+                cin.clear();
+                cin.ignore(123, '\n');
+            }
+        if (num1 == 90) // we help the program to compute 0.
+        {
+            cout << "This is the Cosine in degrees: 0" << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
+        }
+        else
+        cout << "This is the Cosine in degrees: " << cos(num1*radianToDegree) << endl;
+        cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
 }
-void Tangent(void)	// void to get user input and calculate Sine
+void Tangent(void)  // void to get user input and calculate Sine
 {
-	float num1;
-	cout << "Please enter the number corresponding to the Tangent.\n";
+    float num1;
+    cout << "Please enter the number corresponding to the Tangent.\n";
     while(!(cin >> num1))
         {
             cout << "Error. Please enter a number: \n";
@@ -221,64 +240,64 @@ void Tangent(void)	// void to get user input and calculate Sine
     cout << "This is the Tangent in degrees: " << tan(num1*radianToDegree) << endl;
     cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
 }
-void Secant(void)	// void to get user input and calculate Sine
+void Secant(void)   // void to get user input and calculate Sine
 {
-	float num1;
-	cout << "Please enter your number for the secant.\n";
-	while(!(cin >> num1))
-	{
-		cout << "Error. Please enter a number.\n";
-		cin.clear();
-		cin.ignore(123, '/n');
-	}
-	cout << "Your sine in degrees is: " << 1/cos(number * radianToDegree) << endl;
+    float num1;
+    cout << "Please enter your number for the secant.\n";
+    while(!(cin >> num1))
+    {
+        cout << "Error. Please enter a number.\n";
+        cin.clear();
+        cin.ignore(123, '/n');
+    }
+    cout << "Your sine in degrees is: " << 1/cos(num1 * radianToDegree) << endl;
 }
-void Cosecant(void)	// void to get user input and calculate Sine
+void Cosecant(void) // void to get user input and calculate Sine
 {
-	float num1;
-	cout << "Please enter your number for the cosecant.\n";
-	while(!(cin >> num1))
-	{
-		cout << "Error. Please enter a number.\n";
-		cin.clear();
-		cin.ignore(123, '/n');
-	}
-	cout << "Your sine in degrees is: " << 1/tan(number * radianToDegree) << endl;
+    float num1;
+    cout << "Please enter your number for the cosecant.\n";
+    while(!(cin >> num1))
+    {
+        cout << "Error. Please enter a number.\n";
+        cin.clear();
+        cin.ignore(123, '/n');
+    }
+    cout << "Your sine in degrees is: " << 1/tan(num1 * radianToDegree) << endl;
 }
 void Cotangent(void)
 {
-	float num1
+    float num1;
 }
 void InverseSine(void)
 {
-	float num1;
-	cout << "Please enter the number corresponding to the Inverse Sine.\n";
+    double num1;
+    cout << "Please enter the number corresponding to the Inverse Sine.\n";
     while(!(cin >> num1))
         {
             cout << "Error. Please enter a number: \n";
             cin.clear();
             cin.ignore(123, '\n');
         }
-    cout << "This is the Inverse Sine in radians: " << asin(num1)  << endl;
+    cout << "This is the Inverse Sine in radians: " << asin(num1, 19)  << endl;
     cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
 }
 void InverseCosine(void)
 {
-	float num1;
-	cout << "Please enter the number corresponding to the  Inverse Cosine.\n";
+    double num1;
+    cout << "Please enter the number corresponding to the  Inverse Cosine.\n";
     while(!(cin >> num1))
         {
             cout << "Error. Please enter a number: \n";
             cin.clear();
             cin.ignore(123, '\n');
         }
-    cout << "This is the Inverse Cosine in radians: " << acos(num1) << endl;
+    cout << "This is the Inverse Cosine in radians: " << acos(num1 , 19) << endl;
     cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
 }
 void InverseTangent(void)
 {
-	float num1;
-	cout << "Please enter the number corresponding to the Inverse Tangent.\n";
+    double num1;
+    cout << "Please enter the number corresponding to the Inverse Tangent.\n";
     while(!(cin >> num1))
         {
             cout << "Error. Please enter a number: \n";
@@ -290,44 +309,44 @@ void InverseTangent(void)
 }
 void combinatoricFunctions(void) // menu for factorial, nPr, nCr
 {
-	void(*combiMenu[9])(void) = {Combination, Permuntation, Factorial, fibonacciVoid, Pascal, ArithmeticSeq, ArithmeticSer, GeometricSeq, GeometricSer};
+    void(*combiMenu[9])(void) = {Combination, Permuntation, Factorial, fibonacciVoid, Pascal, ArithmeticSeq, ArithmeticSer, GeometricSeq, GeometricSer};
 
-	size_t combiMenuOption;
+    size_t combiMenuOption;
 
-	cout << "\nHere are your options:\n"
-		 << "0. - Combination\n";
-		 << "1. - Permutation\n";
-		 << "2. - Factorial\n";
-		 << "3. - Fibonacci Series\n";
-		 << "4. - Pascal's Triangle\n";
-		 << "5. - Arithmetic Sequences\n";
-		 << "6. - Arithmetic Series\n";
-		 << "7. - Geometric Sequences\n";
-		 << "8. - Geometric Series\n";
-	while((cin >> trigMenuOption) || trigMenuOption >= 0 && trigMenuOption <= 8)
-	{
-		(*combiMenu[combiMenuOption])();
+    cout << "\nHere are your options:\n"
+         << "0. - Combination\n"
+         << "1. - Permutation\n"
+         << "2. - Factorial\n"
+         << "3. - Fibonacci Series\n"
+         << "4. - Pascal's Triangle\n"
+         << "5. - Arithmetic Sequences\n"
+         << "6. - Arithmetic Series\n"
+         << "7. - Geometric Sequences\n"
+         << "8. - Geometric Series\n";
+    while((cin >> combiMenuOption) || combiMenuOption >= 0 && combiMenuOption <= 8)
+    {
+        (*combiMenu[combiMenuOption])();
 
-		cout << "\nHere are your options:\n"
-		 << "0. - Combination\n";
-		 << "1. - Permutation\n";
-		 << "2. - Factorial\n";
-		 << "3. - Fibonacci Series\n";
-		 << "4. - Pascal's Triangle\n";
-		 << "5. - Arithmetic Sequences\n";
-		 << "6. - Arithmetic Series\n";
-		 << "7. - Geometric Sequences\n";
-		 << "8. - Geometric Series\n";
-	}
-	if (trigMenuOption >=9 || trigMenuOption < 0)
-	{
-		GetOut();
-	}
+        cout << "\nHere are your options:\n"
+         << "0. - Combination\n"
+         << "1. - Permutation\n"
+         << "2. - Factorial\n"
+         << "3. - Fibonacci Series\n"
+         << "4. - Pascal's Triangle\n"
+         << "5. - Arithmetic Sequences\n"
+         << "6. - Arithmetic Series\n"
+         << "7. - Geometric Sequences\n"
+         << "8. - Geometric Series\n";
+    }
+    if (combiMenuOption >=9 || combiMenuOption < 0)
+    {
+        GetOut();
+    }
 }
 void combination(void)
 {
-	float num1, num2; // we create floats to hold user input.
-	cout << "Please enter your n\n";
+    float num1, num2; // we create floats to hold user input.
+    cout << "Please enter your n\n";
             while(!(cin >> num1) || num1 < 0)
                 {
                     cout << "Error. Please enter your n as a positive number: \n";
@@ -343,31 +362,31 @@ void combination(void)
                 }
             cout << comb(num1, num2) << endl;
             cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Redwan Ahmed and Roy Gao.\n\n";
-            }
 }
 void Permutation(void)
 {
-	cout << "Please enter your n\n";
-	while(!(cin >> num1) || num1 < 0) // Loop to validate num1 input.
-	    {
-	        cout << "Error. Please enter n as a positive number: \n";
-	        cin.clear();
-	        cin.ignore(123, '\n');
-	    }
-	cout << "Please enter your r\n";
-	while(!(cin >> num2) || num2 < 0 || num2 > num1) // Loop to validate num2 input.
-	    {
-	        cout << "Error. Please enter r as a positive number, and remember r cannot be biggert han n: \n";
-	        cin.clear();
-	        cin.ignore(123, '\n');
-	    }
-	cout << per(num1, num2) << endl;
-	cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Redwan Ahmed.\n\n";
+    float num1, num2;
+    cout << "Please enter your n\n";
+    while(!(cin >> num1) || num1 < 0) // Loop to validate num1 input.
+        {
+            cout << "Error. Please enter n as a positive number: \n";
+            cin.clear();
+            cin.ignore(123, '\n');
+        }
+    cout << "Please enter your r\n";
+    while(!(cin >> num2) || num2 < 0 || num2 > num1) // Loop to validate num2 input.
+        {
+            cout << "Error. Please enter r as a positive number, and remember r cannot be biggert han n: \n";
+            cin.clear();
+            cin.ignore(123, '\n');
+        }
+    cout << per(num1, num2) << endl;
+    cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Redwan Ahmed.\n\n";
 }
 void Factorial(void)
 {
-	float num1;
-	cout << "Please enter a number so we can calculate the factorial.\n";
+    float num1;
+    cout << "Please enter a number so we can calculate the factorial.\n";
         while(!(cin >> num1))
             {
                 cout << "Error. Please enter a number: \n";
@@ -387,8 +406,8 @@ void Factorial(void)
 }
 void fibonacciVoid(void)
 {
-	int i1;
-	cout << "Please enter the number of iterations for the fibonacci sequence\n";
+    int i1;
+    cout << "Please enter the number of iterations for the fibonacci sequence\n";
         while(!(cin >> i1) || i1 > 40 || i1 <= 0) // We have the limits of 1 to 40 to secure the memory of the computer.
             {
                 cout << "Error. Please enter a positive number between 1 and 40: \n";
@@ -402,8 +421,8 @@ void fibonacciVoid(void)
 }
 void Pascal(void)
 {
-	int i1;
-	 cout << "Please enter the number for Pascal's triangle between 1 and 13.\n";
+    int i1;
+     cout << "Please enter the number for Pascal's triangle between 1 and 13.\n";
         while(!(cin >> i1) || i1 > 13 || i1 <= 0) // We limit 0 to 13 to maintain harmony.
             {
                 cout << "Error. Please enter a number between 1 and 13: \n";
@@ -415,9 +434,9 @@ void Pascal(void)
 }
 void ArithmeticSeq(void)
 {
-	float num1,num2;
-	int i1;
-	cout << "Please enter the first term of the sequence.\n";
+    float num1,num2;
+    int i1;
+    cout << "Please enter the first term of the sequence.\n";
         while(!(cin >> num1))
             {
                 cout << "Error. Please enter the first term of the sequence: \n";
@@ -443,9 +462,9 @@ void ArithmeticSeq(void)
 }
 void ArithmeticSer(void)
 {
-	float num1, num2;
-	int i1;
-	cout << "Please enter the first term of the sum.\n";
+    float num1, num2;
+    int i1;
+    cout << "Please enter the first term of the sum.\n";
         while(!(cin >> num1))
             {
                 cout << "Error. Please enter a number: \n";
@@ -471,9 +490,9 @@ void ArithmeticSer(void)
 }
 void GeometricSeq(void)
 {
-	int i1;
-	float num1, num2;
-	cout << "Please enter the first term of the sequence.\n";
+    int i1;
+    float num1, num2;
+    cout << "Please enter the first term of the sequence.\n";
         while(!(cin >> num1))
             {
                 cout << "Error. Please enter the first term of the sequence: \n";
@@ -500,9 +519,9 @@ void GeometricSeq(void)
 }
 void GeometricSer(void)
 {
-	int i1;
-	float num1, num2;
-	cout << "Please enter the first term of the sum.\n";
+    int i1;
+    float num1, num2;
+    cout << "Please enter the first term of the sum.\n";
         while(!(cin >> num1))
             {
                 cout << "Error. Please enter the first term of the sum: \n";
@@ -681,7 +700,7 @@ float mean(float arr[], int n){
     for(int i = 0;i < n; i++)
         sum += arr[i];
 
-    return sum/n;   // 
+    return sum/n;   //
 }
 double standardDeviation(float arr[], int n)
 {
@@ -709,7 +728,7 @@ double pow(float n, float m)
                 total *= n;
             }
         return total;
-    }  
+    }
 }
 double sin(float x)
 {
@@ -717,7 +736,7 @@ double sin(float x)
     double mxx = -x*x;                                 // Multiplying the variable
     double addens = 1;
     double temp = 2;                                   // Init of temp
-    for(int n = 2; n <= 200; n++)                      // For loop to do Sine, n can be increased for accuracy 
+    for(int n = 2; n <= 200; n++)                      // For loop to do Sine, n can be increased for accuracy
     {
         addens *= mxx/temp++/temp++;
         result += addens;
@@ -730,7 +749,7 @@ double cos(float x)
     double mxx = -x*x;                                 // Multiplying the variable
     double addens = 1;
     double temp = 1;                                   // Init of temp
-    for(int n = 2; n <= 200; n++)                      // For loop to do Cosine, n can be increased for accuracy 
+    for(int n = 2; n <= 200; n++)                      // For loop to do Cosine, n can be increased for accuracy
     {
         //cout << "This is the iteneration number: " << n << endl;
         addens *= mxx/temp++/temp++;
@@ -769,7 +788,7 @@ double asin(double num, double precision = 19)
     }
     else{
     for(int n = 0; n < precision; n++) // For loop to calculate the sum of invsine
-    { 
+    {
         value += 1.4298004337*(1/pow(2,2*n)*(pow(num,2*n+1)/(2*n+1)));
     }
     return value;
@@ -783,7 +802,7 @@ double atan(double x)
 { // Any values other than 19 in precision and we skew far from the values.
     double value = 0;
     for(int n = 0; n < 29; n++) // For loop to calculate the sum of invtan.
-    { 
+    {
         value += pow(-1.0, n) * pow(x, 2*n+1) / (2*n + 1);
     }
     return value;
@@ -823,7 +842,7 @@ double calculateMedian(int *nums, int arry)
 
     return median;
 }
-long nCr(long n , long r) 
+long nCr(long n , long r)
 {
    long nume = 1, i;
    for(i = n; i>r; i--)
@@ -845,8 +864,8 @@ void polar_to_rectangular(float r , float theta)
 {
     double x, y;
 
-    x = r * cos(radian_to_degree(theta));
-    y = r * sin(radian_to_degree(theta));
+    x = r * cos(radianToDegree*(theta));
+    y = r * sin(radianToDegree*(theta));
 
     cout << "Your x value is " << x << ".\nYour y value is " << y << ".\n" << endl;
 }
@@ -855,7 +874,7 @@ void rectangular_to_polar (float x, float y)
     double r, theta;
 
     r = sqrt(pow(x, 2) + pow (y, 2)); // Function to get r.
-    theta = atan (y / x) * 180 / pi; // Function to get theta.
+    theta = atan (y / x) * 180 / PI; // Function to get theta.
 
     //Character output for the void function.
     cout << "Your r value is " << r << ".\nYour angle value is " << theta << " degrees.\n";
