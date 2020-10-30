@@ -30,7 +30,32 @@ void arithmetic(void) // menu for arithmetic functions and absolute value
 		GetOut();
 	}
 }
-
+void Sum(void);
+{
+cout << "Please enter the first and second number to make the sum." << endl;
+    while(!(cin >> num1))
+	{
+	    cout << "Error. Please enter the first number: \n";
+	    cin.clear();
+	    cin.ignore(123, '\n');
+	}
+    cout << "Please enter the second number of the sum: " << endl;
+    while(!(cin >> num2))
+	{
+	    cout << "Error. Please enter the second number: \n";
+	    cin.clear();
+	    cin.ignore(123, '\n');
+	}
+    cout << fixed << setprecision(2); // Setting it in two decimal places.
+    cout << "Your sum of " << num1 << " and " << num2 << " is " << num1 + num2 << endl;
+    cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
+}
+Diff,
+Mult,
+Div,
+Conjugate,
+PolartoRect,
+RecttoPolar
 void exponentsAndLogarithms(void) // menu for exponents and logarithms
 {
     void(*exponentsAndLogarithmsMenu[7])(void) = {Exponential, Power, Natural_Log, Log, Hyperbolic_Sine, Hyperbolic_Cosine, Hyperbolic_Tangent};
