@@ -33,7 +33,7 @@ void arithmetic(void) // menu for arithmetic functions and absolute value
 
 void exponentsAndLogarithms(void) // menu for exponents and logarithms
 {
-    void(*exponentsAndLogarithmsMenu[7])(void) = {Exponential, Power, Natural Log, Log, Hyperbolic sine, Hyperbolic Cosine, Hyperbolic Tangent};
+    void(*exponentsAndLogarithmsMenu[7])(void) = {Exponential, Power, Natural_Log, Log, Hyperbolic_Sine, Hyperbolic_Cosine, Hyperbolic_Tangent};
 
 	size_t exponentsAndLogarithmsMenuOption;
 
