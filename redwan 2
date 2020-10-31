@@ -1,8 +1,3 @@
-int i1, i2, i3;
-float num1, num2, num3;
-double dnum1, dnum2, dnum3;
-
-
 void arithmetic(void) // menu for arithmetic functions and absolute value
 {
 	void(*aritheticMenu[7])(void) = {Sum, Diff, Mult, Div, Conjugate, PolartoRect, RecttoPolar};
@@ -55,12 +50,111 @@ cout << "Please enter the first and second number to make the sum." << endl;
     cout << "Your sum of " << num1 << " and " << num2 << " is " << num1 + num2 << endl;
     cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
 }
-Diff,
-Mult,
-Div,
-Conjugate,
-PolartoRect,
-RecttoPolar
+void Diff(void);
+{
+cout << "Please enter the first and second number to make the subtraction.\nThe second number will be subtracted from the first." << endl;
+            while(!(cin >> num1))
+                {
+                    cout << "Error. Please enter the first number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            while(!(cin >> num2))
+                {
+                    cout << "Error. Please enter the second number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << fixed << setprecision(2); // Setting it in two decimal places.
+            cout << "Your sum of " << num1 << " and " << num2 << " is " << num1 - num2 << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
+}
+void Mult(void);
+{
+cout << "Please enter the first and second number to make the multiplication." << endl;
+            while(!(cin >> num1))
+                {
+                    cout << "Error. Please enter the first number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            while(!(cin >> num2))
+                {
+                    cout << "Error. Please enter the second number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << fixed << setprecision(2); // Setting it in two decimal places.
+            cout << "Your multiplication of " << num1 << " by " << num2 << " is " << num1 * num2 << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
+}
+void Div(void);
+{
+ cout << "Please enter the first and second number to make the division.\nThe first number will be divided by the second.\n";
+            while(!(cin >> num1))
+                {
+                    cout << "Error. Please enter the first number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            while(!(cin >> num2))
+                {
+                    cout << "Error. Please enter the second number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            if (num2 == 0)// In case it is not divisible.
+            {
+                cout << "Sorry you cannot divide by 0, try with another divisor.\n";
+                break;
+            }
+            else
+            {
+               cout << fixed << setprecision(2); // Setting it to two decimal places.
+               cout << "The division of " << num1 << " by " << num2 << " is " << num1 / num2 << endl;
+               cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
+}
+void Conjugate(void)
+{
+    double dnum1, dnum2;
+    cout << "Please enter x\n";
+            while(!(cin >> dnum1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << "Please enter y\n";
+            while(!(cin >> dnum2))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            conjugation(dnum1, dnum2);
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Redwan Ahmed.\n\n";
+}
+void RecttoPolar(void)
+{
+    float num1, num2;
+    cout << "Please enter your x\n";
+            while(!(cin >> num1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << "Please enter your y\n";
+            while(!(cin >> num2))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << "This is your conversion from rectangular to polar: \n";
+            rectangular_to_polar (num1, num2);
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Redwan Ahmed.\n\n";
+}
 void exponentsAndLogarithms(void) // menu for exponents and logarithms
 {
     void(*exponentsAndLogarithmsMenu[7])(void) = {Exponential, Power, Natural_Log, Log, Hyperbolic_Sine, Hyperbolic_Cosine, Hyperbolic_Tangent};
@@ -93,4 +187,101 @@ void exponentsAndLogarithms(void) // menu for exponents and logarithms
 		GetOut();
 	}
 
+}
+void Exponential(void)
+{
+     cout << "Please enter the number so we can raise e to that number.\n";
+            while(!(cin >> num1))
+                {
+                    cout << "Error. Please enter the exponential to e: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << fixed << setprecision(2); // We set the decimals to 2.
+            cout << "You raise e to the " << num1 << " The result is: " << pow(e,num1) << "." << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
+}
+void Power(void)
+{
+     float num1, num2;
+     cout << "Please enter the number x and then enter the exponential.\n";
+            while(!(cin >> num1))
+                {
+                    cout << "Error. Please enter the first number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << "Please now enter the exponential: \n";
+            while(!(cin >> num2))
+                {
+                    cout << "Error. Please enter the second number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << fixed << setprecision(2); // We set the decimals to 2.
+            cout << "You decided to raise " << num1 << " to the exponential " << num2 << " the result is: " << pow(num1,num2) << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
+}
+void Natural_Log(void)
+{
+    cout << "Please enter the number so we can compute the natural log of that number.\n";
+            while(!(cin >> dnum1))
+                {
+                    cout << "Error. Please enter a number for the natural log(ln): \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << fixed << setprecision(2);
+            cout << "The natural log of " << dnum1 << " is: " << ln(dnum1) << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
+}
+void Log(void)
+{
+    double dnum1;
+    cout << "Please enter the number so we can compute the log of base 10 of that number.\n";
+            while(!(cin >> dnum1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << fixed << setprecision(2);
+            cout << "The log of " << dnum1 << " is: " << LOG10(dnum1) << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
+}
+void Hyperbolic_Sine(void)
+{
+    cout << "Please enter the value of the hyperbolic Sine.\n";
+            while(!(cin >> dnum1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << "The value of the hyperbolic Sine is "<< sinh(dnum1) << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
+}
+void Hyperbolic_Cosine(void)
+{
+    cout << "Please enter the value of the hyperbolic Cosine.\n";
+            while(!(cin >> dnum1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << "The value of the hyperbolic Cosine is "<< cosh(dnum1) << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
+}
+void Hyperbolic_Tangent(void)
+{
+    cout << "Please enter the value of the hyperbolic Tangent.\n";
+            while(!(cin >> dnum1))
+                {
+                    cout << "Error. Please enter a number: \n";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+            cout << "The value of the hyperbolic Tangent is "<< tanh(dnum1) << endl;
+            cout << "This result is brought to you by the programmer Pablo Cabrera and tested by Roy Gao.\n\n";
 }
